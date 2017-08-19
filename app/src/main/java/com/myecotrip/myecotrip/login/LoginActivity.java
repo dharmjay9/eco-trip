@@ -1,0 +1,106 @@
+package com.myecotrip.myecotrip.login;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.myecotrip.myecotrip.R;
+import com.myecotrip.myecotrip.base.BaseActivity;
+import com.myecotrip.myecotrip.home.HomeActivity;
+import com.myecotrip.myecotrip.network.ErrorCodes;
+import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
+import com.myecotrip.myecotrip.register.RegistrationActivity;
+
+public class LoginActivity extends BaseActivity {
+
+    private EditText etEmail,etPassword;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    protected void initView() {
+
+        setContentView(R.layout.activity_login);
+        etEmail= (EditText) findViewById(R.id.etEmail);
+        etPassword= (EditText) findViewById(R.id.etPassword);
+        findViewById(R.id.tvSkip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
+            }
+        });
+        findViewById(R.id.tvRegister).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+                finish();
+            }
+        });
+
+        findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(TextUtils.isEmpty(etEmail.getText().toString())){
+                    Toast.makeText(LoginActivity.this,"Please enter email",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(etPassword.getText().toString())){
+                    Toast.makeText(LoginActivity.this,"Please enter password",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                LoginRequest loginRequest=new LoginRequest();
+                loginRequest.setUserName(etEmail.getText().toString());
+                loginRequest.setPassword(etPassword.getText().toString());
+                loginRequest.setLoginType("myecotrip");
+                doLogin(loginRequest);
+
+            }
+        });
+    }
+
+    private void doLogin(final LoginRequest loginRequest){
+        displayProgressDialog();
+        restClient.doLogin(loginRequest, new MyEcoTripCallBack<LoginResponse>() {
+            @Override
+            public void onFailure(String s, ErrorCodes errorCodes) {
+                Toast.makeText(LoginActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+                hideProgressDialog();
+            }
+
+            @Override
+            public void onSuccess(LoginResponse loginResponse) {
+                if(loginResponse.getResponse().getError()==0){
+                    hideProgressDialog();
+                    converbizUser.setUserId(String.valueOf(loginResponse.getContent().getUserId()));
+                    Intent intent=new Intent();
+                    setResult(2,intent);
+                    finish();//finishing activity
+                }
+                else {
+                    Toast.makeText(LoginActivity.this,loginResponse.getResponse().getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2)
+        {
+            Intent intent=new Intent();
+            setResult(2,intent);
+            finish();//finishing activity
+        }
+    }
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.myecotrip.myecotrip">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:name=".common.MyEcoTripApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".payment.PaymentFailureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".payment.PaymentSuccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".register.RegistrationActivity"
+            android:label="@string/title_activity_register" />
+        <activity
+            android:name=".home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".listing.ListingActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".booking.BookingActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".orderSummary.OrderSummaryActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".details.ecoTrail.EcoTrailListingActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".details.ecoTrail.TrailDetailsActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".booking.ActivitySeatDetails"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".details.DetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".details.jungleStay.JungleStayDetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".details.ecoTrail.EcotrailsDetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".details.wildSafari.WildSafariDetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".details.birdSanactury.BirdSanacturyDetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".payment.WebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:label="@string/app_name"></activity>
+
+        <receiver android:name=".payment.SmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".payment.StatusActivity"
+            android:label="@string/title_activity_status"></activity>
+
+    </application>
+
+</manifest>

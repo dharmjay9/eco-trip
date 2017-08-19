@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_exp"
+            android:icon="@drawable/ic_people_black_24dp"
+            android:title="Experience" />
+
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_video_library_black_24dp"
+            android:title="Video" />
+        <item
+            android:id="@+id/nav_advice"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Do's &amp; Don't" />
+        <item
+            android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_people_black_24dp"
+            android:title="About us" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Logout" />
+
+    </group>
+
+
+</menu>
