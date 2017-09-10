@@ -11,5 +11,7 @@
     <color name="gary">#e4e1e1</color>
     <color name="gray">#e4e1e1</color>
     <color name="colorBlackTransparent">#50000000</color>
+    <color name="colorBlackDarkTransparent">#60000000</color>
     <color name="colorTextBlack">#1d1d26</color>
+    <color name="light_black">#565656</color>
 </resources>
