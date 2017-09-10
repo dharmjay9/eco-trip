@@ -43,7 +43,7 @@ public class RestClient implements INetwork {
     public RestClient() {
        // String url = "http://myecotrip.com/myecotrip_api/public/index.php/api/v1/";
        // String url = "http://myecotrip.com/myecotrip_api_new/public/index.php/api/v1/";
-        String url = "http://13.126.3.49:8080/development/myecotripAPIs/public/index.php/";
+        String url = "http://35.154.28.131/myecotripapis/public/index.php/";
         Retrofit retrofit = new Retrofit.Builder()
                 .client(new OkHttpClient())
                 .baseUrl(url)

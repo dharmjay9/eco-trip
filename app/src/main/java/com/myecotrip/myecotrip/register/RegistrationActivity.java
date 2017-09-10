@@ -116,6 +116,7 @@ public class RegistrationActivity extends BaseActivity {
                 finish();//finishing activity
             }
         });
+
     }
 }
 
