@@ -39,8 +39,8 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
             android:name=".register.RegistrationActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_register" />
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home"
@@ -76,40 +76,37 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".details.DetailsActivity"
             android:label="@string/title_activity_details"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".details.jungleStay.JungleStayDetailsActivity"
             android:label="@string/title_activity_details"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".details.ecoTrail.EcotrailsDetailsActivity"
             android:label="@string/title_activity_details"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".details.wildSafari.WildSafariDetailsActivity"
             android:label="@string/title_activity_details"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".details.birdSanactury.BirdSanacturyDetailsActivity"
             android:label="@string/title_activity_details"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".payment.WebViewActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:label="@string/app_name"></activity>
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
 
         <receiver android:name=".payment.SmsReceiver">
             <intent-filter>
@@ -119,8 +116,8 @@
 
         <activity
             android:name=".payment.StatusActivity"
-            android:label="@string/title_activity_status"></activity>
-
+            android:label="@string/title_activity_status" />
+        <activity android:name=".aboutus.AboutUsActivity"></activity>
     </application>
 
 </manifest>

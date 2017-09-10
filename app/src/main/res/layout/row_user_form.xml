@@ -45,7 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Age Between 05 to 125"
-                android:inputType="text" />
+                android:maxLines="1"
+                android:maxLength="3"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
 

@@ -81,13 +81,14 @@ public class WebViewActivity extends Activity implements Communicator {
                 ServiceHandler sh = new ServiceHandler();
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("orderId", mainIntent.getStringExtra(AvenuesParams.ORDER_ID)));
+                params.add(new BasicNameValuePair(AvenuesParams.AMOUNT, mainIntent.getStringExtra(AvenuesParams.AMOUNT)));
                 String vResponse = sh.makeServiceCall(mainIntent.getStringExtra(AvenuesParams.RSA_KEY_URL), ServiceHandler.GET, params);
                 System.out.println(vResponse);
                 if (!ServiceUtility.chkNull(vResponse).equals("")
                         && ServiceUtility.chkNull(vResponse).toString().indexOf("ERROR") == -1) {
                     StringBuffer vEncVal = new StringBuffer("");
                     vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.AMOUNT, mainIntent.getStringExtra(AvenuesParams.AMOUNT)));
-                   // vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.CURRENCY, mainIntent.getStringExtra(AvenuesParams.CURRENCY)));
+                    vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.CURRENCY, mainIntent.getStringExtra(AvenuesParams.CURRENCY)));
                     encVal = RSAUtility.encrypt(vEncVal.substring(0, vEncVal.length() - 1), vResponse);
                 }
             } catch (Exception e) {
@@ -121,6 +122,7 @@ public class WebViewActivity extends Activity implements Communicator {
             myBrowser.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
 
+            myBrowser.getSettings().setJavaScriptEnabled(true);
             myBrowser.setWebViewClient(new WebViewClient() {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView webView, String url) {
@@ -137,6 +139,7 @@ public class WebViewActivity extends Activity implements Communicator {
                         myBrowser.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                     }
                     if (url.equals(getString(R.string.redirect_url_id))) {
+
 
                     }
 
@@ -164,7 +167,7 @@ public class WebViewActivity extends Activity implements Communicator {
             params.append(ServiceUtility.addToPostParams(AvenuesParams.REDIRECT_URL, mainIntent.getStringExtra(AvenuesParams.REDIRECT_URL)));
             params.append(ServiceUtility.addToPostParams(AvenuesParams.CANCEL_URL, mainIntent.getStringExtra(AvenuesParams.CANCEL_URL)));
             params.append(ServiceUtility.addToPostParams(AvenuesParams.ENC_VAL, URLEncoder.encode(encVal)));
-          /*  params.append(new BasicNameValuePair(AvenuesParams.BILLING_NAME, "Gopal Kumar"));
+           /* params.append(new BasicNameValuePair(AvenuesParams.BILLING_NAME, "Gopal Kumar"));
             params.append(new BasicNameValuePair(AvenuesParams.BILLING_ADDRESS, "Lakhisary Bihar"));
             params.append(new BasicNameValuePair(AvenuesParams.BILLING_CITY, "Lakhisaray"));
             params.append(new BasicNameValuePair(AvenuesParams.BILLING_COUNTRY, "India"));
@@ -176,13 +179,14 @@ public class WebViewActivity extends Activity implements Communicator {
             String vPostParams = params.substring(0, params.length() - 1);
             try {
                 myBrowser.postUrl(Constants.TRANS_URL, EncodingUtils.getBytes(vPostParams, "UTF-8"));
+                myBrowser.addJavascriptInterface(new MyJavaScriptInterface1(),"HtmlViewer");
             } catch (Exception e) {
                 showToast("Exception occured while opening webview.");
             }
         }
     }
 
-    class MyJavaScriptInterface {
+    class MyJavaScriptInterface1 {
         @JavascriptInterface
         @SuppressWarnings("unused")
         public void processHTML(String html) {
@@ -284,6 +288,19 @@ public class WebViewActivity extends Activity implements Communicator {
     public void loadWaitingFragment(String url) {
 
         // SBI Debit Card
+
+        if(url.contains(getString(R.string.redirect_url_id))){
+            Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
+            intent.putExtra("transStatus", "Sucess");
+            startActivity(intent);
+            finish();
+        }
+        if(url.contains(getString(R.string.cancel_url_id))){
+            Intent intent = new Intent(getApplicationContext(), PaymentFailureActivity.class);
+            intent.putExtra("transStatus", "Failure");
+            startActivity(intent);
+            finish();
+        }
         if (url.contains("https://acs.onlinesbi.com/sbi/")) {
             OtpFragment waitingFragment = new OtpFragment();
             FragmentTransaction transaction = manager.beginTransaction();
@@ -523,6 +540,7 @@ public class WebViewActivity extends Activity implements Communicator {
 
                 try {
                     //removeWaitingFragment();
+                    removeApprovalFragment();
                     removeApprovalFragment();
                     ///////////////////////////////////////
                     String msgText = intent.getStringExtra("get_otp");

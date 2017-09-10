@@ -120,7 +120,7 @@
     <string name="merchant_user_id">81401</string>
     <string name="currencey_id">INR</string>
     <string name="redirect_url_id">http://35.154.28.131/myecotripapis/public/index.php/ecotrails/responseReceiver</string>
-    <string name="cancel_url_id">http://35.154.28.131/myecotripapis/public/index.php/ecotrails/responseReceiver</string>
+    <string name="cancel_url_id">http://35.154.28.131/myecotripapis/public/index.php/ecotrails//failureReceiver</string>
     <string name="rsa_url_id">http://35.154.28.131/myecotripapis/public/index.php/getRSAkey</string>
 
 
@@ -128,6 +128,11 @@
     <string name="trek_count">Trekkers</string>
     <string name="time_taken">Time</string>
     <string name="taril_type">Taril Type</string>
+    <string name="about_us">About Us</string>
+    <string name="about_echoytrails">About Ecotrails</string>
+    <string name="echotrails_details">Go out of your way, beyond what you know, finding your path, travelling that extra mile, discovering the untouched treasures of the nature. Novice or expert you shall always enjoy the challenge that a trek presents to you. Wander into the nature, live the places you have only dreamed of visiting after watching a documentary or reading a book. No inhibition, no deceit, discover yourself amidst an unknown trail.</string>
+    <string name="why">Why trek</string>
+    <string name="desc">Trekking is a fine group activity where adrenaline is articulate, where a lovely nature loving community thrives, where you make real friends and where miles are memories.</string>
 
     <!--  public static final String ACCESS_CODE = "access_code";
     public static final String MERCHANT_ID = "merchant_id";
