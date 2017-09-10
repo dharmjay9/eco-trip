@@ -19,9 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Gopal kumar on 19-07-2017.
- */
+
 
 public class CheckInFragment extends Fragment {
     private CalendarView calendar;
