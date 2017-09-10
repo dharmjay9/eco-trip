@@ -116,14 +116,15 @@
     <string name="rsa_url">RSA Key Url</string>
     <string name="access_code">Access Code</string>
     <string name="title_activity_status">CCAvenueMobile</string>
-    <string name="access_code_id">AVVU07CJ01CE93UVEC</string>
+    <string name="access_code_id">AVEG72EH70BY50GEYB</string>
     <string name="merchant_user_id">81401</string>
     <string name="currencey_id">INR</string>
-    <string name="redirect_url_id">http://13.126.3.49:8080/CCAvenueRSA/ccavMobileResponseHandler.php</string>
-    <string name="cancel_url_id">http://13.126.3.49:8080/CCAvenueRSA/ccavMobileResponseHandler.php</string>
-    <string name="rsa_url_id">http://13.126.3.49:8080/CCAvenueRSA/getRSA.php</string>
+    <string name="redirect_url_id">http://35.154.28.131/myecotripapis/public/index.php/ecotrails/responseReceiver</string>
+    <string name="cancel_url_id">http://35.154.28.131/myecotripapis/public/index.php/ecotrails/responseReceiver</string>
+    <string name="rsa_url_id">http://35.154.28.131/myecotripapis/public/index.php/getRSAkey</string>
 
-<string name="distance">Distance</string>
+
+    <string name="distance">Distance</string>
     <string name="trek_count">Trekkers</string>
     <string name="time_taken">Time</string>
     <string name="taril_type">Taril Type</string>
