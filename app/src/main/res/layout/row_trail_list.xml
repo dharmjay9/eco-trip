@@ -38,8 +38,32 @@
             android:background="@color/colorBlackTransparent"
             android:orientation="horizontal"
             android:visibility="visible"
-            android:weightSum="3">
+            android:weightSum="4">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/hafe_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <TextView
+                    style="@style/TextViewSmallWhiteMargin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_extra_small_one"
+                    android:padding="0dp"
+                    android:text="@string/trek_count"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvtrek_count"
+                    style="@style/TextViewSmallWhiteBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="40"
+                    android:textSize="12dp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,7 +79,7 @@
                     android:layout_marginBottom="@dimen/margin_extra_small_one"
                     android:padding="0dp"
                     android:text="@string/distance"
-                    android:textSize="12dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tvDistance"
@@ -63,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1hr 25m"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,7 +105,7 @@
                     android:layout_marginBottom="@dimen/margin_extra_small_one"
                     android:padding="0dp"
                     android:text="@string/time_taken"
-                    android:textSize="12dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tvTime"
@@ -89,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="45m"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -107,7 +131,7 @@
                     android:layout_marginBottom="@dimen/margin_extra_small_one"
                     android:padding="0dp"
                     android:text="@string/taril_type"
-                    android:textSize="12dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tvTrailType"
@@ -115,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="400"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -129,33 +153,6 @@
             android:paddingBottom="8dp"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingTop="8dp">
-            <!--<LinearLayout
-                android:visibility="visible"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvDistance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    tools:text="TextView" />
-
-                <TextView
-                    android:id="@+id/tvTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    tools:text="TextView" />
-            </LinearLayout>-->
-
-            <!-- <TextView
-                 android:id="@+id/tvTrailType"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="5dp"
-                 tools:text="TextView" />-->
 
             <TextView
                 android:id="@+id/tvDetails"

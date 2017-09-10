@@ -124,7 +124,8 @@
     <string name="rsa_url_id">http://13.126.3.49:8080/CCAvenueRSA/getRSA.php</string>
 
 <string name="distance">Distance</string>
-    <string name="time_taken">Time Taken</string>
+    <string name="trek_count">Trekkers</string>
+    <string name="time_taken">Time</string>
     <string name="taril_type">Taril Type</string>
 
     <!--  public static final String ACCESS_CODE = "access_code";

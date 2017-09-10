@@ -43,8 +43,9 @@ public class EcoTrailDetailsAdapter extends RecyclerView.Adapter<EcoTrailDetails
 
         TrailListingRowData.ContentBean trailsBean=list.get(position);
         holder.tvTrail.setText(trailsBean.getName());
+        holder.tvtrek_count.setText(String.valueOf(trailsBean.getMax_trekkers()));
         holder.tvDistance.setText(trailsBean.getDistance()+" Km");
-        holder.tvTrailTime.setText(trailsBean.getHours()+" H");
+        holder.tvTrailTime.setText(trailsBean.getHours()+" H "+trailsBean.getMinutes()+" Min");
         holder.tvTrailType.setText(trailsBean.getType());
         holder.tvDetails.setText(trailsBean.getDescription());
         Picasso.with(context).load(CommonUtils.getImageUrl(trailsBean.getLogo())).placeholder(R.drawable.icon_placeholder).into(holder.ivTrail);
@@ -58,7 +59,7 @@ public class EcoTrailDetailsAdapter extends RecyclerView.Adapter<EcoTrailDetails
 
     public class EcotrailViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tvTrail,tvTrailType,tvTrailTime,tvDistance,tvDetails;
+        private TextView tvTrail,tvTrailType,tvTrailTime,tvDistance,tvDetails,tvtrek_count;
         private ImageView ivTrail;
 
         public EcotrailViewHolder(View itemView) {
@@ -69,6 +70,7 @@ public class EcoTrailDetailsAdapter extends RecyclerView.Adapter<EcoTrailDetails
             tvTrailTime= (TextView) itemView.findViewById(R.id.tvTime);
             tvTrailType= (TextView) itemView.findViewById(R.id.tvTrailType);
             tvDetails= (TextView) itemView.findViewById(R.id.tvDetails);
+            tvtrek_count= (TextView) itemView.findViewById(R.id.tvtrek_count);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
