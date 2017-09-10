@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 public class EcotrailsDetailsActivity extends BaseActivity {
 
     public static final String ECOTRAIL_ID = "ecotrail_id";
+    public static final String ECOTRAIL_NAME = "ecotrail_name";
     private ImageView mIvDetails;
     private TextView tvDetails;
     private TextView trailTitle;

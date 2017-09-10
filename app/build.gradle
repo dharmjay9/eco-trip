@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         useLibrary 'org.apache.http.legacy'
-
+        multiDexEnabled true
         applicationId "com.myecotrip.myecotrip"
         minSdkVersion 15
         targetSdkVersion 25
@@ -38,7 +38,7 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
-
+    compile 'com.android.support:multidex:1.0.1'
 
 
 }

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
 import com.myecotrip.myecotrip.booking.BookingActivity;
@@ -21,10 +23,6 @@ import com.myecotrip.myecotrip.home.SwipePagerAdapter;
 import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 import com.myecotrip.myecotrip.orderSummary.OrderSummaryActivity;
-
-/**
- * Created by Gopal kumar on 19-07-2017.
- */
 
 public class TrailDetailsActivity extends BaseActivity {
 
@@ -86,7 +84,7 @@ public class TrailDetailsActivity extends BaseActivity {
         restClient.getTrailDetails(id, new MyEcoTripCallBack<TrailDetailsResponse>() {
             @Override
             public void onFailure(String s, ErrorCodes errorCodes) {
-
+                Toast.makeText(TrailDetailsActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
 
             @Override
