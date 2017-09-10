@@ -7,7 +7,15 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="activity_small_padding">8dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="eco_image_height">160dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="hafe_margin">8dp</dimen>
     <dimen tools:override="true" name="design_navigation_icon_padding">20dp</dimen>
-
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_extra_small">8dp</dimen>
+    <dimen name="margin_extra_small_one">4dp</dimen>
+    <dimen name="margin_large">36dp</dimen>
+    <dimen name="margin_extra_large">50dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="medium_text">15sp</dimen>
 </resources>

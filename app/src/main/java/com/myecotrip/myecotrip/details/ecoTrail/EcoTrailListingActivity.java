@@ -10,14 +10,12 @@ import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
 import com.myecotrip.myecotrip.listing.newListing.ListingFragment;
 
-/**
- * Created by Gopal kumar on 16-08-2017.
- */
-
 public class EcoTrailListingActivity extends AppCompatActivity {
     public static final String K1="k1";
     public static final String PARAM_TYPE="type";
-    private String type;
+    public static final String PARAM_TYPE1="name";
+
+    private String type,ecoName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,13 +24,14 @@ public class EcoTrailListingActivity extends AppCompatActivity {
         EcoListingFragment listingFragment= (EcoListingFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
         String  id=getIntent().getStringExtra(EcotrailsDetailsActivity.ECOTRAIL_ID);
         type=getIntent().getStringExtra(PARAM_TYPE);
+        ecoName=getIntent().getStringExtra(EcotrailsDetailsActivity.ECOTRAIL_NAME);
         listingFragment.getData(id,type);
         setupToolBar();
     }
 
     private void setupToolBar(){
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(type);
+        toolbar.setTitle(ecoName);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

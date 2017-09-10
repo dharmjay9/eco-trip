@@ -1,41 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="@dimen/margin_extra_small"
+    android:layout_marginRight="@dimen/margin_extra_small"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="8dp">
 
-    android:orientation="vertical">
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/ivTrail"
-            android:layout_width="100dp"
-            android:layout_height="110dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/eco_image_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
             android:scaleType="fitXY"
             android:src="@drawable/icon_placeholder" />
+
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorBlackTransparent"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/hafe_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewSmallWhiteMargin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_extra_small_one"
+                    android:padding="0dp"
+                    android:text="@string/distance"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    style="@style/TextViewSmallWhiteBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1hr 25m"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/hafe_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewSmallWhiteMargin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_extra_small_one"
+                    android:padding="0dp"
+                    android:text="@string/time_taken"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    style="@style/TextViewSmallWhiteBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45m"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/hafe_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewSmallWhiteMargin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_extra_small_one"
+                    android:padding="0dp"
+                    android:text="@string/taril_type"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tvTrailType"
+                    style="@style/TextViewSmallWhiteBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="400"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:orientation="vertical"
             android:paddingBottom="8dp"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingTop="8dp">
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                tools:text="TextView" />
-
-            <LinearLayout
+            <!--<LinearLayout
                 android:visibility="visible"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -54,30 +148,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     tools:text="TextView" />
+            </LinearLayout>-->
 
-
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvTrailType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                tools:text="TextView" />
+            <!-- <TextView
+                 android:id="@+id/tvTrailType"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 tools:text="TextView" />-->
 
             <TextView
-                android:visibility="gone"
-                android:text="Details"
-                android:maxLines="2"
                 android:id="@+id/tvDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"/>
-
-
+                android:layout_marginTop="8dp"
+                android:maxLines="2"
+                android:text="Details"
+                android:visibility="gone" />
         </LinearLayout>
 
-    </LinearLayout>
 
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_layout"
+        android:padding="@dimen/margin_extra_small"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        tools:text="TextView" />
 </android.support.v7.widget.CardView>

@@ -43,9 +43,9 @@ public class EcoTrailDetailsAdapter extends RecyclerView.Adapter<EcoTrailDetails
 
         TrailListingRowData.ContentBean trailsBean=list.get(position);
         holder.tvTrail.setText(trailsBean.getName());
-        holder.tvDistance.setText("Distance : "+trailsBean.getDistance());
-        holder.tvTrailTime.setText("Time Taken : "+trailsBean.getHours());
-        holder.tvTrailType.setText("Taril Type : "+trailsBean.getType());
+        holder.tvDistance.setText(trailsBean.getDistance()+" Km");
+        holder.tvTrailTime.setText(trailsBean.getHours()+" H");
+        holder.tvTrailType.setText(trailsBean.getType());
         holder.tvDetails.setText(trailsBean.getDescription());
         Picasso.with(context).load(CommonUtils.getImageUrl(trailsBean.getLogo())).placeholder(R.drawable.icon_placeholder).into(holder.ivTrail);
 

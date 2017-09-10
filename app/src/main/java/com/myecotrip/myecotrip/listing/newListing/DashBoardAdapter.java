@@ -55,6 +55,8 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.Dash
         String url=CommonUtils.getImageUrl(subCategoryRowData.getLogo());
         Picasso.with(mContext).load(url).placeholder(R.drawable.icon_placeholder).into(holder.ivSafari);
         holder.tvName.setText(subCategoryRowData.getName());
+        holder.tvTrailCount.setText(subCategoryRowData.getTrailCount()+ " tails");
+
         holder.tvComingSoon.setVisibility(View.GONE);
 
     }
@@ -67,7 +69,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.Dash
     public class DashBordViewHolder extends RecyclerView.ViewHolder {
         private View view;
         private ImageView ivSafari;
-        private TextView tvName;
+        private TextView tvName,tvTrailCount;
         private TextView tvComingSoon;
 
         public DashBordViewHolder(View itemView) {
@@ -75,6 +77,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.Dash
             view = itemView;
             ivSafari = (ImageView) view.findViewById(R.id.ivSafari);
             tvName= (TextView) itemView.findViewById(R.id.tvName);
+            tvTrailCount= (TextView) itemView.findViewById(R.id.tvTrailCount);
             tvComingSoon= (TextView) itemView.findViewById(R.id.tvComingSoon);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,6 +95,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.Dash
                 case "Ecotrails":
                     intent=new Intent(mContext, EcoTrailListingActivity.class);
                     intent.putExtra(EcotrailsDetailsActivity.ECOTRAIL_ID,String.valueOf(rowData.getId()));
+                    intent.putExtra(EcotrailsDetailsActivity.ECOTRAIL_NAME,rowData.getName());
                     break;
                 case "Bird Sanctuary":
                     intent=new Intent(mContext, BirdSanacturyDetailsActivity.class);

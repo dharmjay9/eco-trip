@@ -21,9 +21,6 @@ import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 
 
-/**
- * Created by divum on 13/2/17.
- */
 
 public class EcoListingFragment extends BaseFragment {
 
@@ -68,3 +65,4 @@ public class EcoListingFragment extends BaseFragment {
         });
     }
 }
+
