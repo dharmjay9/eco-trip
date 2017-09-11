@@ -133,7 +133,7 @@
     <string name="reporting_time">Reporting time</string>
     <string name="treakking_duration">Treakking Duration</string>
     <string name="treakking_type">Treakking Type</string>
-    <string name="rupes">\u20A8</string>
+    <string name="rupes">\u20B9</string>
 
     <!--  public static final String ACCESS_CODE = "access_code";
     public static final String MERCHANT_ID = "merchant_id";
