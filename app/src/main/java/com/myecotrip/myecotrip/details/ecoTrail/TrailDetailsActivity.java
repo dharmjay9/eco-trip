@@ -1,12 +1,16 @@
 package com.myecotrip.myecotrip.details.ecoTrail;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
@@ -15,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.myecotrip.myecotrip.PermissionImpl;
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
 import com.myecotrip.myecotrip.booking.BookingActivity;
@@ -28,7 +33,7 @@ import com.myecotrip.myecotrip.orderSummary.OrderSummaryActivity;
 
 public class TrailDetailsActivity extends BaseActivity {
 
-    private TextView tvTitle, tvDesc, tvWhen;//tvDistance, tvTime,tvTrailType
+    private TextView tvTitle, tvDesc, tvWhen,tv_description_note;//tvDistance, tvTime,tvTrailType
     private TextView tvstarting_point, tv_end_point, tv_treakking_distance, tv_reporting_time, tv_treakking_duration, tv_treakking_type;
     private TextView location_detail, trekker_per_person, owner_contact_person;
     private int trailId;
@@ -57,6 +62,7 @@ public class TrailDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_trails);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvDesc = (TextView) findViewById(R.id.tvDescription);
+        tv_description_note = (TextView) findViewById(R.id.tv_description_note);
         //  tvDistance = (TextView) findViewById(R.id.tvDistance);
         //  tvTime = (TextView) findViewById(R.id.tvTime);
         tvstarting_point = (TextView) findViewById(R.id.tvstarting_point);
@@ -112,9 +118,9 @@ public class TrailDetailsActivity extends BaseActivity {
             }
         });
     }
-
+     TrailDetailsResponse.ContentBean trailsBean;
     private void setData(TrailDetailsResponse trailDetailsResponse) {
-        TrailDetailsResponse.ContentBean trailsBean = trailDetailsResponse.getContent();
+         trailsBean = trailDetailsResponse.getContent();
         tvTitle.setText("About " + trailsBean.getName());
         tvstarting_point.setText(trailsBean.getStarting_point());
         tv_end_point.setText(trailsBean.getEnding_point());
@@ -127,12 +133,30 @@ public class TrailDetailsActivity extends BaseActivity {
         tv_reporting_time.setText(trailsBean.getReporting_time());
         tv_treakking_duration.setText(trailsBean.getHours() + " Hrs " + trailsBean.getMinutes() + " Mins");
         tv_treakking_type.setText(trailsBean.getType());
-
+        tv_description_note.setText("@NOTE- "+trailsBean.getGeneral_instruction());
         location_detail.setCompoundDrawablesWithIntrinsicBounds( R.drawable.map_marker_outline, 0, 0, 0);
         location_detail.setText( trailsBean.getRange());
+        location_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:0,0?q=" + (trailsBean.getRange())));
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         trekker_per_person.setText("Per Person "+ getResources().getString(R.string.rupes)+String.valueOf(trailsBean.getPricePerPerson()));
         owner_contact_person.setText(trailsBean.getIncharger_details().get(0) + ", " + trailsBean.getIncharger_details().get(2));
+        owner_contact_person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makePhoneCall();
+            }
+        });
         tvWhen.setText(Html.fromHtml(trailsBean.getWhen_to_visit()));
         ViewPagerIndicator viewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.pagerIndicater);
         SwipePagerAdapter swipePagerAdapter = new SwipePagerAdapter(getSupportFragmentManager());
@@ -144,11 +168,8 @@ public class TrailDetailsActivity extends BaseActivity {
         viewPagerIndicator.setPager(viewPager);
     }
 
-/*
     private void makePhoneCall() {
         requestAppPermissions();
-
-
     }
 
     private void requestAppPermissions() {
@@ -175,10 +196,11 @@ public class TrailDetailsActivity extends BaseActivity {
                 }, Manifest.permission.CALL_PHONE);
     }
 
-    private void gotoNext() {
+    private void gotoNext( ) {
         //Intent phoneIntent = new Intent(Intent.ACTION_CALL);
         //phoneIntent.setData(Uri.parse("080-46481855"));
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", "080-46481855", null));
+        String phoneNo=trailsBean.getIncharger_details().get(2);
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phoneNo, null));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -219,6 +241,6 @@ public class TrailDetailsActivity extends BaseActivity {
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
-    }*/
+    }
 
 }

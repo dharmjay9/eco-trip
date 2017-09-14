@@ -29,6 +29,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 interface ApiCall {
 
@@ -40,6 +41,9 @@ interface ApiCall {
 
     @GET("categories")
     Call<CategoryRowData> getCategory();
+
+    @GET("getRSAkey")
+    Call<String> getRsaKey(@Query("orderId") String orderiD);
 
     @POST("subCategories")
     Call<SubCategoryRowData> getSubCategory(@Body SubCategoryRequest subCategoryRequest);
