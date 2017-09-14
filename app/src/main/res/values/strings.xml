@@ -133,6 +133,7 @@
     <string name="echotrails_details">Go out of your way, beyond what you know, finding your path, travelling that extra mile, discovering the untouched treasures of the nature. Novice or expert you shall always enjoy the challenge that a trek presents to you. Wander into the nature, live the places you have only dreamed of visiting after watching a documentary or reading a book. No inhibition, no deceit, discover yourself amidst an unknown trail.</string>
     <string name="why">Why trek</string>
     <string name="desc">Trekking is a fine group activity where adrenaline is articulate, where a lovely nature loving community thrives, where you make real friends and where miles are memories.</string>
+
     <string name="starting_point">Starting Point</string>
     <string name="end_point">End Point</string>
     <string name="treakking_distance">Treakking Distance</string>
@@ -141,13 +142,6 @@
     <string name="treakking_type">Treakking Type</string>
     <string name="rupes">\u20B9</string>
 
-    <!--  public static final String ACCESS_CODE = "access_code";
-    public static final String MERCHANT_ID = "merchant_id";
-    public static final String ORDER_ID = "order_id";
-    public static final String AMOUNT = "amount";
-    public static final String CURRENCY = "currency";
-    public static final String ENC_VAL = "enc_val";
-    public static final String REDIRECT_URL = "redirect_url";
-    public static final String CANCEL_URL = "cancel_url";
-    public static final String RSA_KEY_URL = "rsa_key_url";-->
+
+
 </resources>

@@ -46,7 +46,7 @@
             android:background="@color/colorBlackDarkTransparent"
             android:orientation="vertical"
             android:paddingTop="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/hafe_margin"
             android:gravity="center_vertical"
             >
             <TextView
@@ -66,8 +66,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:textColor="@color/white"
                 android:textSize="13sp"
-                android:text="7 Trail"
-                android:visibility="gone"
+                android:text="7 trails"
                 android:paddingBottom="@dimen/margin_smaller"
                 />
         </LinearLayout>
