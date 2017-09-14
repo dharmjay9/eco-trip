@@ -1,18 +1,18 @@
-package com.myecotrip.myecotrip.login;
+package com.myecotrip.myecotrip.profileUpdate;
 
 import com.google.gson.annotations.SerializedName;
 import com.myecotrip.myecotrip.base.CommonModel;
 
 /**
- * Created by Gopal kumar on 04-06-2017.
+ * Created by Gopal kumar on 14-09-2017.
  */
 
-public class LoginResponse extends CommonModel{
+public class ProfileUpdateResponse extends CommonModel {
 
 
     /**
-     * content : {"userId":8,"userName":"Vinay"}
-     * response : {"status-code":200,"error":0,"sys_msg":"","message":"Login Success"}
+     * content : {"id":2,"first_name":"abcd","last_name":"xyz","contact_no":"8852103645","country":"India"}
+     * response : {"status-code":200,"error":0,"sys_msg":"Updated","message":"Updated Data Successfully"}
      */
 
     private ContentBean content;
@@ -35,9 +35,8 @@ public class LoginResponse extends CommonModel{
     }
 
     public static class ContentBean {
-
         /**
-         * id : 7
+         * id : 2
          * first_name : abcd
          * last_name : xyz
          * contact_no : 8852103645
@@ -95,8 +94,8 @@ public class LoginResponse extends CommonModel{
         /**
          * status-code : 200
          * error : 0
-         * sys_msg :
-         * message : Login Success
+         * sys_msg : Updated
+         * message : Updated Data Successfully
          */
 
         @SerializedName("status-code")

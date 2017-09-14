@@ -16,7 +16,7 @@ import com.myecotrip.myecotrip.register.RegistrationActivity;
 
 public class LoginActivity extends BaseActivity {
 
-    private EditText etEmail,etPassword;
+    private EditText etEmail, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class LoginActivity extends BaseActivity {
     protected void initView() {
 
         setContentView(R.layout.activity_login);
-        etEmail= (EditText) findViewById(R.id.etEmail);
-        etPassword= (EditText) findViewById(R.id.etPassword);
+        etEmail = (EditText) findViewById(R.id.etEmail);
+        etPassword = (EditText) findViewById(R.id.etPassword);
         findViewById(R.id.tvSkip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,15 +48,15 @@ public class LoginActivity extends BaseActivity {
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(etEmail.getText().toString())){
-                    Toast.makeText(LoginActivity.this,"Please enter email",Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(etEmail.getText().toString())) {
+                    Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(TextUtils.isEmpty(etPassword.getText().toString())){
-                    Toast.makeText(LoginActivity.this,"Please enter password",Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(etPassword.getText().toString())) {
+                    Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_LONG).show();
                     return;
                 }
-                LoginRequest loginRequest=new LoginRequest();
+                LoginRequest loginRequest = new LoginRequest();
                 loginRequest.setUserName(etEmail.getText().toString());
                 loginRequest.setPassword(etPassword.getText().toString());
                 loginRequest.setLoginType("myecotrip");
@@ -66,40 +66,41 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    private void doLogin(final LoginRequest loginRequest){
+    private void doLogin(final LoginRequest loginRequest) {
         displayProgressDialog();
         restClient.doLogin(loginRequest, new MyEcoTripCallBack<LoginResponse>() {
             @Override
             public void onFailure(String s, ErrorCodes errorCodes) {
-                Toast.makeText(LoginActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
                 hideProgressDialog();
             }
 
             @Override
             public void onSuccess(LoginResponse loginResponse) {
-                if(loginResponse.getResponse().getError()==0){
+                if (loginResponse.getResponse().getError() == 0) {
                     hideProgressDialog();
-                    converbizUser.setUserId(String.valueOf(loginResponse.getContent().getUserId()));
-                    Intent intent=new Intent();
-                    setResult(2,intent);
+                    converbizUser.setUserId(String.valueOf(loginResponse.getContent().getId()));
+                    converbizUser.setFirstName(loginResponse.getContent().getFirst_name());
+                    converbizUser.setLastName(loginResponse.getContent().getLast_name());
+                    converbizUser.setMobileNo(loginResponse.getContent().getContact_no());
+                    converbizUser.setCountry(loginResponse.getContent().getCountry());
+                    Intent intent = new Intent();
+                    setResult(2, intent);
                     finish();//finishing activity
-                }
-                else {
-                    Toast.makeText(LoginActivity.this,loginResponse.getResponse().getMessage(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, loginResponse.getResponse().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // check if the request code is same as what is passed  here it is 2
-        if(requestCode==2)
-        {
-            Intent intent=new Intent();
-            setResult(2,intent);
+        if (requestCode == 2) {
+            Intent intent = new Intent();
+            setResult(2, intent);
             finish();//finishing activity
         }
     }

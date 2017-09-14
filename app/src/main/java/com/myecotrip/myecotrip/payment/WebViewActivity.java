@@ -26,6 +26,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.myecotrip.myecotrip.R;
+import com.myecotrip.myecotrip.common.MyEcoTripUser;
 import com.myecotrip.myecotrip.payment.Utility.AvenuesParams;
 import com.myecotrip.myecotrip.payment.Utility.Constants;
 import com.myecotrip.myecotrip.payment.Utility.RSAUtility;
@@ -80,6 +81,7 @@ public class WebViewActivity extends Activity implements Communicator {
             try {
                 ServiceHandler sh = new ServiceHandler();
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
+                MyEcoTripUser.getInstance(WebViewActivity.this).setOrderId(mainIntent.getStringExtra(AvenuesParams.ORDER_ID));
                 params.add(new BasicNameValuePair("orderId", mainIntent.getStringExtra(AvenuesParams.ORDER_ID)));
                 params.add(new BasicNameValuePair(AvenuesParams.AMOUNT, mainIntent.getStringExtra(AvenuesParams.AMOUNT)));
                 String vResponse = sh.makeServiceCall(mainIntent.getStringExtra(AvenuesParams.RSA_KEY_URL), ServiceHandler.GET, params);
@@ -179,7 +181,7 @@ public class WebViewActivity extends Activity implements Communicator {
             String vPostParams = params.substring(0, params.length() - 1);
             try {
                 myBrowser.postUrl(Constants.TRANS_URL, EncodingUtils.getBytes(vPostParams, "UTF-8"));
-                myBrowser.addJavascriptInterface(new MyJavaScriptInterface1(),"HtmlViewer");
+                myBrowser.addJavascriptInterface(new MyJavaScriptInterface1(), "HtmlViewer");
             } catch (Exception e) {
                 showToast("Exception occured while opening webview.");
             }
@@ -289,13 +291,13 @@ public class WebViewActivity extends Activity implements Communicator {
 
         // SBI Debit Card
 
-        if(url.contains(getString(R.string.redirect_url_id))){
+        if (url.contains(getString(R.string.redirect_url_id))) {
             Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
             intent.putExtra("transStatus", "Sucess");
             startActivity(intent);
             finish();
         }
-        if(url.contains(getString(R.string.cancel_url_id))){
+        if (url.contains(getString(R.string.cancel_url_id))) {
             Intent intent = new Intent(getApplicationContext(), PaymentFailureActivity.class);
             intent.putExtra("transStatus", "Failure");
             startActivity(intent);

@@ -10,6 +10,8 @@
     <dimen name="eco_image_height">160dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="hafe_margin">8dp</dimen>
+    <dimen name="margin_very_small">4dp</dimen>
+
     <dimen tools:override="true" name="design_navigation_icon_padding">20dp</dimen>
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_extra_small">8dp</dimen>
@@ -21,4 +23,6 @@
     <dimen name="margin_smaller">12dp</dimen>
     <dimen name="title_text">24sp</dimen>
     <dimen name="title_text_biger">28sp</dimen>
+    <dimen name="medium_text_small">14sp</dimen>
+    <dimen name="medium_text_big">16sp</dimen>
 </resources>

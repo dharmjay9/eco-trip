@@ -111,6 +111,10 @@ public class RegistrationActivity extends BaseActivity {
             public void onSuccess(RegisterResponse registerResponse) {
                 hideProgressDialog();
                 converbizUser.setUserId(String.valueOf(registerResponse.getContent().getId()));
+                converbizUser.setFirstName(registerResponse.getContent().getFirst_name());
+                converbizUser.setLastName(registerResponse.getContent().getLast_name());
+                converbizUser.setMobileNo(registerResponse.getContent().getContact_no());
+                converbizUser.setCountry(registerResponse.getContent().getCountry());
                 Intent intent=new Intent();
                 setResult(2,intent);
                 finish();//finishing activity

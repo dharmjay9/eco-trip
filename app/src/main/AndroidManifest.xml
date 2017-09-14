@@ -11,7 +11,7 @@
     <application
         android:name=".common.MyEcoTripApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -48,6 +48,16 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".listing.ListingActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".profileUpdate.OrderHistoryActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".profileUpdate.ProfileUpdateActivity"
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -102,6 +112,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".aboutus.AboutUsActivity"
+            android:label="@string/title_activity_details"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".payment.WebViewActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
@@ -117,7 +132,6 @@
         <activity
             android:name=".payment.StatusActivity"
             android:label="@string/title_activity_status" />
-        <activity android:name=".aboutus.AboutUsActivity"></activity>
     </application>
 
 </manifest>

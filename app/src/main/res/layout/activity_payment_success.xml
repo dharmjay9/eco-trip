@@ -2,17 +2,86 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/progressBar"/>
     <TextView
-        android:id="@+id/textView6"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:id="@+id/tvProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Payment is success" />
-    <TextView
-        android:id="@+id/tvContinue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:text="Continue to home screen"/>
+        android:text="Wait we are getting your booking details" />
+
+    <LinearLayout
+        android:id="@+id/llBooking"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvStatus"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wait we are getting your booking details" />
+
+        <TextView
+            android:id="@+id/tvBookingId"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wait we are getting your booking details" />
+
+        <TextView
+            android:id="@+id/tvBookingDate"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wait we are getting your booking details" />
+
+        <TextView
+            android:id="@+id/tvTrailName"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wait we are getting your booking details" />
+
+        <TextView
+            android:id="@+id/tvTrailCount"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wait we are getting your booking details" />
+
+        <TextView
+            android:id="@+id/tvTotalAmount"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wait we are getting your booking details" />
+
+        <TextView
+            android:id="@+id/tvTotalTexAmount"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wait we are getting your booking details" />
+
+
+        <TextView
+            android:paddingTop="30dp"
+            android:id="@+id/tvContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            tools:text="Continue to home screen"/>
+    </LinearLayout>
+
+
+
 </LinearLayout>
