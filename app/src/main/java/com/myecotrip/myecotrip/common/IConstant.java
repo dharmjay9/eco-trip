@@ -11,4 +11,6 @@ public interface IConstant {
 
     String IP_DATE_FORMATER = "yyyy-MM-dd hh:mm:ss";
     String OP_DATE_FORMATER = "yyyy-MM-dd hh:mm:ss";
+    int LOGIN_FROM_HOME=1;
+    int LOGIN_FROM_CHECK_OUT=2;
 }

@@ -141,6 +141,10 @@
     <string name="treakking_duration">Treakking Duration</string>
     <string name="treakking_type">Treakking Type</string>
     <string name="rupes">\u20B9</string>
+    <string-array name="country">
+        <item>India</item>
+        <item>Others</item>
+    </string-array>
 
 
 

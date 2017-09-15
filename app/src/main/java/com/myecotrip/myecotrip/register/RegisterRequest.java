@@ -22,6 +22,7 @@ public class RegisterRequest {
     private String email;
     private String contact_no;
     private String password;
+    private String country;
 
     public String getSign_in_with() {
         return sign_in_with;
@@ -69,5 +70,13 @@ public class RegisterRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

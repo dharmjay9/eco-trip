@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,8 +18,10 @@ import android.widget.TextView;
 
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
+import com.myecotrip.myecotrip.common.IConstant;
 import com.myecotrip.myecotrip.common.MyEcoTripUser;
 import com.myecotrip.myecotrip.login.LoginActivity;
+import com.myecotrip.myecotrip.orderSummary.OrderSummaryActivity;
 import com.myecotrip.myecotrip.profileUpdate.OrderHistoryActivity;
 import com.myecotrip.myecotrip.profileUpdate.ProfileUpdateActivity;
 
@@ -30,7 +33,8 @@ public class HomeActivity extends BaseActivity
 
 
     private MyEcoTripUser myEcoTripUser;
-    private TextView tvUserName,tvMobile;
+    private TextView tvUserName, tvMobile;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +65,20 @@ public class HomeActivity extends BaseActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-         tvUserName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvUserName);
-         tvMobile = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvMobile);
+        tvUserName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvUserName);
+        tvMobile = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvMobile);
         navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, ProfileUpdateActivity.class));
             }
         });
-         myEcoTripUser = MyEcoTripUser.getInstance(this);
+        myEcoTripUser = MyEcoTripUser.getInstance(this);
         navigationView.setNavigationItemSelectedListener(this);
+        if (navigationView != null) {
+            menu = navigationView.getMenu();
+            //menu.findItem(R.id.nav_pkg_manage).setVisible(false);//In case you want to remove menu item
+        }
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
@@ -114,26 +122,31 @@ public class HomeActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         int id = item.getItemId();
 
-       /* if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else*/
         if (id == R.id.nav_log_out) {
 
-            drawer.closeDrawer(GravityCompat.START);
-            converbizUser.setEmail("");
-            converbizUser.setFirstName("");
-            converbizUser.setLastName("");
-            converbizUser.setMobileNo("");
-            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-            finish();
+            if (menu != null) {
+                if (TextUtils.isEmpty(myEcoTripUser.getMobileNo())) {
+                    // menu.findItem(R.id.nav_log_out).setTitle("Login");
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    intent.putExtra(LoginActivity.LOGIN_TYPE, IConstant.LOGIN_FROM_HOME);
+                    startActivity(intent);
+                    finish();
+                    setNameUser();
+
+                } else {
+                    menu.findItem(R.id.nav_log_out).setTitle("Login");
+                    drawer.closeDrawer(GravityCompat.START);
+                    converbizUser.setEmail("");
+                    converbizUser.setFirstName("");
+                    converbizUser.setLastName("");
+                    converbizUser.setMobileNo("");
+                    converbizUser.setUserId("");
+                    setNameUser();
+
+
+                }
+            }
+
             return true;
 
 
@@ -154,6 +167,22 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void onResume() {
         super.onResume();
+        if (menu != null) {
+            if (TextUtils.isEmpty(myEcoTripUser.getMobileNo())) {
+                menu.findItem(R.id.nav_log_out).setTitle("Login");
+                setNameUser();
+
+            } else {
+                menu.findItem(R.id.nav_log_out).setTitle("Logout");
+                setNameUser();
+
+            }
+        }
+
+
+    }
+
+    private void setNameUser() {
         tvUserName.setText(myEcoTripUser.getFirstName() + " " + myEcoTripUser.getLastName());
         tvMobile.setText(myEcoTripUser.getMobileNo());
     }
