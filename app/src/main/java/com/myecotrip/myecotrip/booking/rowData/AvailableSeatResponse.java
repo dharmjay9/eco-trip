@@ -55,7 +55,7 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
         private double serviceCharges;
         private double totalPayable;
         private String trailName;
-
+        private String  trailLogo;
         public String getTrailName() {
             return trailName;
         }
@@ -140,6 +140,7 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             dest.writeDouble(this.totalPayable);
             dest.writeString(this.trailName);
             dest.writeInt(this.trailId);
+            dest.writeString(this.trailLogo);
         }
 
         protected ContentBean(Parcel in) {
@@ -151,6 +152,7 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             this.totalPayable = in.readDouble();
             this.trailName = in.readString();
             this.trailId = in.readInt();
+            this.trailLogo = in.readString();
         }
 
         public static final Creator<ContentBean> CREATOR = new Creator<ContentBean>() {
@@ -164,6 +166,10 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
                 return new ContentBean[size];
             }
         };
+
+        public String getTrailLogo() {
+            return trailLogo;
+        }
     }
 
     public static class ResponseBean implements Parcelable {

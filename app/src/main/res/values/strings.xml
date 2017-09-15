@@ -141,7 +141,7 @@
     <string name="why">Why trek</string>
     <string name="desc">Trekking is a fine group activity where adrenaline is articulate, where a lovely nature loving community thrives, where you make real friends and where miles are memories.</string>
     <string name="grant_permission_phone">Please grant permission for phone call.</string>
-
+    <string name="currencey_str">\u20B9</string>
     <!--  public static final String ACCESS_CODE = "access_code";
     public static final String MERCHANT_ID = "merchant_id";
     public static final String ORDER_ID = "order_id";

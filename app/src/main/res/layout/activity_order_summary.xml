@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rlMain"
-        android:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-       <include layout="@layout/common_toolbar"/>
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <include layout="@layout/common_toolbar" />
+
         <android.support.v7.widget.RecyclerView
             android:layout_below="@+id/toolbar"
             android:id="@+id/rvCommon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"/>
+            android:visibility="visible" />
+
         <Button
             android:id="@+id/btnBookNow"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:text="Add Booking Details"
-            android:textSize="20sp"
-            android:textColor="@color/colorWhite"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
-            android:layout_height="50dp" />
+            android:text="Add Booking Details"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
     </RelativeLayout>
 
 
-
     <ProgressBar
-        android:visibility="gone"
         android:id="@+id/progressBar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
 </FrameLayout>

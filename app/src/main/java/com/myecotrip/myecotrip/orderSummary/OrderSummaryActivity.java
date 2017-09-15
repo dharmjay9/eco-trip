@@ -25,6 +25,7 @@ import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 import com.myecotrip.myecotrip.payment.Utility.AvenuesParams;
 import com.myecotrip.myecotrip.payment.Utility.ServiceUtility;
 import com.myecotrip.myecotrip.payment.WebViewActivity;
+import com.myecotrip.myecotrip.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,15 +63,14 @@ public class OrderSummaryActivity extends BaseActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         rv = (RecyclerView) findViewById(R.id.rvCommon);
         rv.setLayoutManager(new LinearLayoutManager(this));
+
         findViewById(R.id.btnBookNow).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if (TextUtils.isEmpty(converbizUser.getUserId())) {
+               if (TextUtils.isEmpty(converbizUser.getUserId())) {
                     Intent intent = new Intent(OrderSummaryActivity.this, LoginActivity.class);
                     intent.putExtra("k1", request);
-                    intent.putExtra("count",totalGuest);
+                    intent.putExtra("count", totalGuest);
                     startActivityForResult(intent, 2);
                 } else {
 
@@ -83,12 +83,12 @@ public class OrderSummaryActivity extends BaseActivity {
 
     }
 
-    private void goToSeatDeatialPage(){
+    private void goToSeatDeatialPage() {
         Intent intent = new Intent(OrderSummaryActivity.this, ActivitySeatDetails.class);
         intent.putExtra("k1", request);
-        intent.putExtra("count",totalGuest);
-        intent.putExtra("k2",total);
-        intent.putExtra("k3",totalPaybable);
+        intent.putExtra("count", totalGuest);
+        intent.putExtra("k2", total);
+        intent.putExtra("k3", totalPaybable);
         startActivity(intent);
     }
 
@@ -106,18 +106,23 @@ public class OrderSummaryActivity extends BaseActivity {
         List<OrderSummaryData> list = new ArrayList<OrderSummaryData>();
         // list.add(new OrderSummaryData("Camp Name ",content.getCamp()));
         list.add(new OrderSummaryData("Trail Name ", content.getTrailName()));
-        list.add(new OrderSummaryData("Booking Date", content.getTravelDate().split(" ")[0]));
-        list.add(new OrderSummaryData("No of Guest", String.valueOf(request.getGuest_no())));
-        totalGuest=request.getGuest_no();
-        list.add(new OrderSummaryData("Price for one Guest", String.valueOf(content.getPricePerPerson())));
-        list.add(new OrderSummaryData("Service Charge", String.valueOf(content.getServiceCharges())));
-        list.add(new OrderSummaryData("Total Price", String.valueOf(content.getTotal())));
+        list.add(new OrderSummaryData("Check in", Utils.getDateInFormate(content.getTravelDate())));
+        list.add(new OrderSummaryData("No of trekkers", String.valueOf(request.getGuest_no())));
+        totalGuest = request.getGuest_no();
+        list.add(new OrderSummaryData("Price per trekker",getResources().getString(R.string.currencey_str)+ String.valueOf(content.getPricePerPerson())));
+
+        list.add(new OrderSummaryData("Total price",getResources().getString(R.string.currencey_str)+ String.valueOf(content.getTotal())));
+        list.add(new OrderSummaryData("Service Charge",getResources().getString(R.string.currencey_str)+ String.valueOf(content.getServiceCharges())));
+
+        double totalTripAmmount=(content.getTotal()+content.getServiceCharges());
+        list.add(new OrderSummaryData("Total trip",getResources().getString(R.string.currencey_str)+ String.valueOf(totalTripAmmount)));
+
         OrderSummaryAdapter orderSummaryAdapter = new OrderSummaryAdapter(OrderSummaryActivity.this, list);
         rv.setAdapter(orderSummaryAdapter);
         rvMain.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
-        total=content.getTotal();
-        totalPaybable= (int) content.getTotalPayable();
+        total = content.getTotal();
+        totalPaybable = (int) content.getTotalPayable();
     }
 
     private void getData() {
@@ -136,7 +141,7 @@ public class OrderSummaryActivity extends BaseActivity {
                 list.add(new OrderSummaryData("Trail Name ", content.getTrail()));
                 list.add(new OrderSummaryData("Booking Date", content.getCheck_in().split(" ")[0]));
                 list.add(new OrderSummaryData("No of Guest", String.valueOf(request.getGuest_no())));
-                totalGuest=request.getGuest_no();
+                totalGuest = request.getGuest_no();
                 list.add(new OrderSummaryData("Price for one Guest", content.getPrice_per_guest()));
                 list.add(new OrderSummaryData("Total Price", String.valueOf(content.getTotal_price())));
                 OrderSummaryAdapter orderSummaryAdapter = new OrderSummaryAdapter(OrderSummaryActivity.this, list);
@@ -153,8 +158,8 @@ public class OrderSummaryActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         // check if the request code is same as what is passed  here it is 2
         if (requestCode == 2) {
-            if(!TextUtils.isEmpty(converbizUser.getUserId()))
-            goToSeatDeatialPage();
+            if (!TextUtils.isEmpty(converbizUser.getUserId()))
+                goToSeatDeatialPage();
         }
     }
 }

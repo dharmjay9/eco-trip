@@ -11,9 +11,6 @@ import com.myecotrip.myecotrip.R;
 
 import java.util.List;
 
-/**
- * Created by Gopal kumar on 27-07-2017.
- */
 
 public class OrderSummaryAdapter extends RecyclerView.Adapter<OrderSummaryAdapter.OrderViewHolder> {
 
