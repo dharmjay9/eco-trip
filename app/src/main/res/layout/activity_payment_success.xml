@@ -1,87 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-   android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="100dp"
+    android:orientation="vertical">
 
-    <ProgressBar
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/progressBar"/>
-    <TextView
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:id="@+id/tvProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wait we are getting your booking details" />
-
-    <LinearLayout
-        android:id="@+id/llBooking"
-        android:visibility="gone"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvStatus"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Wait we are getting your booking details" />
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="5dp">
 
-        <TextView
-            android:id="@+id/tvBookingId"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Wait we are getting your booking details" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvBookingDate"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Wait we are getting your booking details" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/tvTrailName"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wait we are getting your booking details" />
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:text="Wait we are getting your booking details" />
 
-        <TextView
-            android:id="@+id/tvTrailCount"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Wait we are getting your booking details" />
+            <LinearLayout
+                android:id="@+id/llBooking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-        <TextView
-            android:id="@+id/tvTotalAmount"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Wait we are getting your booking details" />
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:srcCompat="@drawable/ic_close_black_24dp" />
 
-        <TextView
-            android:id="@+id/tvTotalTexAmount"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Wait we are getting your booking details" />
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    tools:text="Wait we are getting your booking details" />
+
+                <TextView
+                    android:id="@+id/tvBookingId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    tools:text="Wait we are getting your booking details" />
+
+                <TextView
+                    android:id="@+id/tvBookingDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    tools:text="Wait we are getting your booking details" />
+
+                <TextView
+                    android:id="@+id/tvTrailName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:text="Wait we are getting your booking details" />
+
+                <TextView
+                    android:id="@+id/tvTrailCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:visibility="gone"
+                    tools:text="Wait we are getting your booking details" />
+
+                <TextView
+                    android:id="@+id/tvTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:visibility="gone"
+                    tools:text="Wait we are getting your booking details" />
+
+                <TextView
+                    android:id="@+id/tvTotalTexAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    tools:text="Wait we are getting your booking details" />
 
 
-        <TextView
-            android:paddingTop="30dp"
-            android:id="@+id/tvContinue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            tools:text="Continue to home screen"/>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/tvContinue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/white"
+                    tools:text="Continue to home screen" />
+            </LinearLayout>
 
 
-
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
