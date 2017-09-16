@@ -39,7 +39,7 @@ public class OrderSummaryActivity extends BaseActivity {
     public static final String TRAIL_DETAILS = "trail_details";
     private RelativeLayout rvMain;
     private ProgressBar progressBar;
-    private RecyclerView rv;
+   // private RecyclerView rv;
     private String trilId;
     private String campId;
     private CheckAvailibityRequest request;
@@ -51,7 +51,7 @@ public class OrderSummaryActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         request = getIntent().getParcelableExtra(TRAIL_REQUEST);
-        setOrderDetails();
+        //setOrderDetails();
 
     }
 
@@ -60,8 +60,8 @@ public class OrderSummaryActivity extends BaseActivity {
         setContentView(R.layout.activity_order_summary);
         rvMain = (RelativeLayout) findViewById(R.id.rlMain);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        rv = (RecyclerView) findViewById(R.id.rvCommon);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+       /* rv = (RecyclerView) findViewById(R.id.rvCommon);
+        rv.setLayoutManager(new LinearLayoutManager(this));*/
         findViewById(R.id.btnBookNow).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,14 +93,14 @@ public class OrderSummaryActivity extends BaseActivity {
     }
 
     private void setupToolBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.order_summary_toolbar);
         toolbar.setTitle("Order Details");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
-    private void setOrderDetails() {
+  /*  private void setOrderDetails() {
         AvailableSeatResponse contentBean = getIntent().getParcelableExtra(TRAIL_DETAILS);
         AvailableSeatResponse.ContentBean content = contentBean.getContent();
         List<OrderSummaryData> list = new ArrayList<OrderSummaryData>();
@@ -118,7 +118,7 @@ public class OrderSummaryActivity extends BaseActivity {
         progressBar.setVisibility(View.GONE);
         total=content.getTotal();
         totalPaybable= (int) content.getTotalPayable();
-    }
+    }*/
 
     private void getData() {
         restClient.getAvibality(request, new MyEcoTripCallBack<CheckVaibilityResponse>() {
@@ -132,7 +132,7 @@ public class OrderSummaryActivity extends BaseActivity {
 
                 CheckVaibilityResponse.ContentBean.BookingBean content = checkVaibilityResponse.getContent().getBooking();
                 List<OrderSummaryData> list = new ArrayList<OrderSummaryData>();
-                list.add(new OrderSummaryData("Camp Name ", content.getCamp()));
+                /*list.add(new OrderSummaryData("Camp Name ", content.getCamp()));
                 list.add(new OrderSummaryData("Trail Name ", content.getTrail()));
                 list.add(new OrderSummaryData("Booking Date", content.getCheck_in().split(" ")[0]));
                 list.add(new OrderSummaryData("No of Guest", String.valueOf(request.getGuest_no())));
@@ -142,7 +142,7 @@ public class OrderSummaryActivity extends BaseActivity {
                 OrderSummaryAdapter orderSummaryAdapter = new OrderSummaryAdapter(OrderSummaryActivity.this, list);
                 rv.setAdapter(orderSummaryAdapter);
                 rvMain.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);*/
 
             }
         });
