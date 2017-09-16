@@ -1,5 +1,6 @@
 package com.myecotrip.myecotrip.network;
 
+import com.myecotrip.myecotrip.booking.rowData.AvailableSeatBokingResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatRuequest;
 import com.myecotrip.myecotrip.booking.rowData.BookingResponse;
@@ -152,8 +153,8 @@ public class RestClient implements INetwork {
     }
 
     @Override
-    public void checkVailableSeat(AvailableSeatRuequest availibityRequest, MyEcoTripCallBack<AvailableSeatResponse> avResponseMyEcoTripCallBack) {
-        Call<AvailableSeatResponse> categoryRowDataCall = iNetwork.checkAvailableSeat(availibityRequest);
+    public void checkVailableSeat(AvailableSeatRuequest availibityRequest, MyEcoTripCallBack<AvailableSeatBokingResponse> avResponseMyEcoTripCallBack) {
+        Call<AvailableSeatBokingResponse> categoryRowDataCall = iNetwork.checkAvailableSeat(availibityRequest);
         categoryRowDataCall.enqueue(new NetWorkCallBack<>(avResponseMyEcoTripCallBack));
     }
 

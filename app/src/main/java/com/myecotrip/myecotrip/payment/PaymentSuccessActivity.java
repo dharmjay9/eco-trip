@@ -24,7 +24,8 @@ import com.myecotrip.myecotrip.network.RestClient;
 public class PaymentSuccessActivity extends Activity {
 
     private LinearLayout llBooking;
-    private TextView tvProgressText, tvStatus, tvBookingId, tvTotalAmount, tvTexAmount, tvBookingDte, tvTrailCount, tvTrailName;
+    private TextView tvProgressText, tvStatus, tvBookingId, tvTotalAmount, tvTexAmount, tvBookingDte,
+            tv_payment_successfully,tvTrailCount, tvTrailName;
     private RestClient restClient;
     private ProgressBar progressBar;
 
@@ -32,15 +33,15 @@ public class PaymentSuccessActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_success);
-        llBooking = (LinearLayout) findViewById(R.id.llBooking);
-        tvProgressText = (TextView) findViewById(R.id.tvProgress);
+        //llBooking = (LinearLayout) findViewById(R.id.llBooking);
+       // tvProgressText = (TextView) findViewById(R.id.tvProgress);
         tvStatus = (TextView) findViewById(R.id.tvStatus);
         tvBookingId = (TextView) findViewById(R.id.tvBookingId);
-        tvTotalAmount = (TextView) findViewById(R.id.tvTotalAmount);
-        tvTexAmount = (TextView) findViewById(R.id.tvTotalTexAmount);
+       tv_payment_successfully = (TextView) findViewById(R.id.tv_payment_successfully);
+       // tvTexAmount = (TextView) findViewById(R.id.tvTotalTexAmount);
         tvBookingDte = (TextView) findViewById(R.id.tvBookingDate);
         tvTrailCount = (TextView) findViewById(R.id.tvTrailCount);
-        tvTrailName = (TextView) findViewById(R.id.tvTrailName);
+       // tvTrailName = (TextView) findViewById(R.id.tvTrailName);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         findViewById(R.id.tvContinue).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,7 @@ public class PaymentSuccessActivity extends Activity {
                    /* if (details.getAmount() == 0)
                         tvTotalAmount.setVisibility(View.GONE);*/
                     //tvTexAmount.setText("Your payment of:" + details.getAmountWithTax());
-
+                    tv_payment_successfully.setText("Your payment of "+getResources().getString(R.string.currencey_str)+" was Successfully completed.");
                    // tvBookingId.setText("Booking Id :" + details.getDisplay_id());
                    /* tvStatus.setText("Order Status :" + details.getBooking_status());
                     if (details.getNumber_of_trekkers() == 0)

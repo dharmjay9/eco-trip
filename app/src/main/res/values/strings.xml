@@ -143,5 +143,15 @@
     <string name="desc">Trekking is a fine group activity where adrenaline is articulate, where a lovely nature loving community thrives, where you make real friends and where miles are memories.</string>
     <string name="grant_permission_phone">Please grant permission for phone call.</string>
     <string name="currencey_str">\u20B9</string>
-
+    <string name="no_of_trekkers">No of trekkers</string>
+    <string name="booking_tickets_no">1</string>
+    <string name="seperator">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</string>
+    <string name="total_trip">Total Trip:</string>
+    <string name="check_in">Check in</string>
+    <string name="price_per_trekker">Price per trekker</string>
+    <string name="total_price">Total price</string>
+    <string name="service_charges">Service charges</string>
+    <string name="booking_title">Booking Details</string>
+    <string name="billing_details">Billing details</string>
+    <string name="no_data_found">There is no data available.</string>
 </resources>

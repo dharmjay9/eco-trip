@@ -6,16 +6,17 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.myecotrip.myecotrip.base.CommonModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Dell_PC on 9/16/2017.
+ */
 
-
-public class AvailableSeatResponse extends CommonModel implements Parcelable {
+public class AvailableSeatBokingResponse extends CommonModel implements Parcelable {
 
 
     /**
-     * content : {"trailId":5,"travelDate":"2018-10-18","noOfTrekkers":13,"pricePerPerson":450,"total":5850,"serviceCharges":380.25,"totalPayable":6230.25}
+     * content : {"trailId":5,"travelDate":"2017-08-18","noOfTrekkers":5,"pricePerPerson":450,"trailName":"Savanadurga","trailLogo":"/assets/img/trails/1503043630.jpg","billDetails":[{"name":"Total price","value":2250},{"name":"Service charges","value":146.25},{"name":"Total trip","value":2396.25}]}
      * response : {"status-code":200,"error":0,"sys_msg":"","message":"Success"}
      */
 
@@ -41,34 +42,21 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
     public static class ContentBean implements Parcelable {
         /**
          * trailId : 5
-         * travelDate : 2018-10-18
-         * noOfTrekkers : 13
+         * travelDate : 2017-08-18
+         * noOfTrekkers : 5
          * pricePerPerson : 450
-         * total : 5850
-         * serviceCharges : 380.25
-         * totalPayable : 6230.25
+         * trailName : Savanadurga
+         * trailLogo : /assets/img/trails/1503043630.jpg
+         * billDetails : [{"name":"Total price","value":2250},{"name":"Service charges","value":146.25},{"name":"Total trip","value":2396.25}]
          */
 
+        private int trailId;
         private String travelDate;
         private int noOfTrekkers;
         private int pricePerPerson;
-        private int total;
-        private double serviceCharges;
-        private double totalPayable;
         private String trailName;
         private String trailLogo;
-
-        public String getTrailName() {
-            return trailName;
-        }
-
         private List<BillDetailsBean> billDetails;
-
-        public void setTrailName(String trailName) {
-            this.trailName = trailName;
-        }
-
-        private int trailId;
 
         public int getTrailId() {
             return trailId;
@@ -102,28 +90,20 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             this.pricePerPerson = pricePerPerson;
         }
 
-        public int getTotal() {
-            return total;
+        public String getTrailName() {
+            return trailName;
         }
 
-        public void setTotal(int total) {
-            this.total = total;
+        public void setTrailName(String trailName) {
+            this.trailName = trailName;
         }
 
-        public double getServiceCharges() {
-            return serviceCharges;
+        public String getTrailLogo() {
+            return trailLogo;
         }
 
-        public void setServiceCharges(double serviceCharges) {
-            this.serviceCharges = serviceCharges;
-        }
-
-        public double getTotalPayable() {
-            return totalPayable;
-        }
-
-        public void setTotalPayable(double totalPayable) {
-            this.totalPayable = totalPayable;
+        public void setTrailLogo(String trailLogo) {
+            this.trailLogo = trailLogo;
         }
 
         public List<BillDetailsBean> getBillDetails() {
@@ -134,7 +114,58 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             this.billDetails = billDetails;
         }
 
-        public ContentBean() {
+        public static class BillDetailsBean implements Parcelable {
+            /**
+             * name : Total price
+             * value : 2250
+             */
+
+            private String name;
+            private double value;
+
+            protected BillDetailsBean(Parcel in) {
+                name = in.readString();
+                value = in.readDouble();
+            }
+
+            public static final Creator<BillDetailsBean> CREATOR = new Creator<BillDetailsBean>() {
+                @Override
+                public BillDetailsBean createFromParcel(Parcel in) {
+                    return new BillDetailsBean(in);
+                }
+
+                @Override
+                public BillDetailsBean[] newArray(int size) {
+                    return new BillDetailsBean[size];
+                }
+            };
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public double getValue() {
+                return value;
+            }
+
+            public void setValue(double value) {
+                this.value = value;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel parcel, int i) {
+                parcel.writeString(name);
+                parcel.writeDouble(value);
+            }
         }
 
         @Override
@@ -144,33 +175,26 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(this.trailId);
             dest.writeString(this.travelDate);
             dest.writeInt(this.noOfTrekkers);
             dest.writeInt(this.pricePerPerson);
-            dest.writeInt(this.total);
-            dest.writeDouble(this.serviceCharges);
-            dest.writeDouble(this.totalPayable);
             dest.writeString(this.trailName);
-            dest.writeInt(this.trailId);
             dest.writeString(this.trailLogo);
-            dest.writeList(this.billDetails);
+            dest.writeTypedList(this.billDetails);
+        }
+
+        public ContentBean() {
         }
 
         protected ContentBean(Parcel in) {
+            this.trailId = in.readInt();
             this.travelDate = in.readString();
             this.noOfTrekkers = in.readInt();
             this.pricePerPerson = in.readInt();
-            this.total = in.readInt();
-            this.serviceCharges = in.readDouble();
-            this.totalPayable = in.readDouble();
             this.trailName = in.readString();
-            this.trailId = in.readInt();
             this.trailLogo = in.readString();
-            //billDetails = new ArrayList<BillDetailsBean>();
-            //in.readList(billDetails,null);
-            in.readList(this.billDetails, BillDetailsBean.class.getClassLoader());
-
-
+            this.billDetails = in.createTypedArrayList(BillDetailsBean.CREATOR);
         }
 
         public static final Creator<ContentBean> CREATOR = new Creator<ContentBean>() {
@@ -184,10 +208,6 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
                 return new ContentBean[size];
             }
         };
-
-        public String getTrailLogo() {
-            return trailLogo;
-        }
     }
 
     public static class ResponseBean implements Parcelable {
@@ -203,6 +223,25 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
         private int error;
         private String sys_msg;
         private String message;
+
+        protected ResponseBean(Parcel in) {
+            statuscode = in.readInt();
+            error = in.readInt();
+            sys_msg = in.readString();
+            message = in.readString();
+        }
+
+        public static final Creator<ResponseBean> CREATOR = new Creator<ResponseBean>() {
+            @Override
+            public ResponseBean createFromParcel(Parcel in) {
+                return new ResponseBean(in);
+            }
+
+            @Override
+            public ResponseBean[] newArray(int size) {
+                return new ResponseBean[size];
+            }
+        };
 
         public int getStatuscode() {
             return statuscode;
@@ -242,34 +281,12 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
         }
 
         @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(this.statuscode);
-            dest.writeInt(this.error);
-            dest.writeString(this.sys_msg);
-            dest.writeString(this.message);
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeInt(statuscode);
+            parcel.writeInt(error);
+            parcel.writeString(sys_msg);
+            parcel.writeString(message);
         }
-
-        public ResponseBean() {
-        }
-
-        protected ResponseBean(Parcel in) {
-            this.statuscode = in.readInt();
-            this.error = in.readInt();
-            this.sys_msg = in.readString();
-            this.message = in.readString();
-        }
-
-        public static final Creator<ResponseBean> CREATOR = new Creator<ResponseBean>() {
-            @Override
-            public ResponseBean createFromParcel(Parcel source) {
-                return new ResponseBean(source);
-            }
-
-            @Override
-            public ResponseBean[] newArray(int size) {
-                return new ResponseBean[size];
-            }
-        };
     }
 
     @Override
@@ -283,77 +300,23 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
         dest.writeParcelable(this.response, flags);
     }
 
-    public AvailableSeatResponse() {
+    public AvailableSeatBokingResponse() {
     }
 
-    protected AvailableSeatResponse(Parcel in) {
+    protected AvailableSeatBokingResponse(Parcel in) {
         this.content = in.readParcelable(ContentBean.class.getClassLoader());
         this.response = in.readParcelable(ResponseBean.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<AvailableSeatResponse> CREATOR = new Parcelable.Creator<AvailableSeatResponse>() {
+    public static final Parcelable.Creator<AvailableSeatBokingResponse> CREATOR = new Parcelable.Creator<AvailableSeatBokingResponse>() {
         @Override
-        public AvailableSeatResponse createFromParcel(Parcel source) {
-            return new AvailableSeatResponse(source);
+        public AvailableSeatBokingResponse createFromParcel(Parcel source) {
+            return new AvailableSeatBokingResponse(source);
         }
 
         @Override
-        public AvailableSeatResponse[] newArray(int size) {
-            return new AvailableSeatResponse[size];
+        public AvailableSeatBokingResponse[] newArray(int size) {
+            return new AvailableSeatBokingResponse[size];
         }
     };
-
-    public static class BillDetailsBean implements Parcelable {
-        /**
-         * name : Total price
-         * value : 2250
-         */
-
-        private String name;
-        private double value;
-
-        protected BillDetailsBean(Parcel in) {
-            name = in.readString();
-            value = in.readInt();
-        }
-
-        public static final Creator<BillDetailsBean> CREATOR = new Creator<BillDetailsBean>() {
-            @Override
-            public BillDetailsBean createFromParcel(Parcel in) {
-                return new BillDetailsBean(in);
-            }
-
-            @Override
-            public BillDetailsBean[] newArray(int size) {
-                return new BillDetailsBean[size];
-            }
-        };
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public double getValue() {
-            return value;
-        }
-
-        public void setValue(double value) {
-            this.value = value;
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel parcel, int i) {
-            parcel.writeString(name);
-            parcel.writeDouble(value);
-        }
-    }
 }

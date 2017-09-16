@@ -30,16 +30,16 @@ public class PaymentFailureActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment_success);
-        llBooking = (LinearLayout) findViewById(R.id.llBooking);
+        setContentView(R.layout.activity_payment_failure);
+       /* llBooking = (LinearLayout) findViewById(R.id.llBooking);
         tvProgressText = (TextView) findViewById(R.id.tvProgress);
-        tvStatus = (TextView) findViewById(R.id.tvProgress);
+        tvStatus = (TextView) findViewById(R.id.tvProgress);*/
         tvBookingId = (TextView) findViewById(R.id.tvStatus);
-        tvTotalAmount = (TextView) findViewById(R.id.tvTotalAmount);
-        tvTexAmount = (TextView) findViewById(R.id.tvTotalTexAmount);
+        /*tvTotalAmount = (TextView) findViewById(R.id.tvTotalAmount);
+        tvTexAmount = (TextView) findViewById(R.id.tvTotalTexAmount);*/
         tvBookingDte = (TextView) findViewById(R.id.tvBookingDate);
         tvTrailCount = (TextView) findViewById(R.id.tvTrailCount);
-        tvTrailName = (TextView) findViewById(R.id.tvTrailName);
+        /*tvTrailName = (TextView) findViewById(R.id.tvTrailName);*/
         findViewById(R.id.tvContinue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

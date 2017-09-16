@@ -3,6 +3,7 @@ package com.myecotrip.myecotrip.network;
 
 import android.app.VoiceInteractor;
 
+import com.myecotrip.myecotrip.booking.rowData.AvailableSeatBokingResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatRuequest;
 import com.myecotrip.myecotrip.booking.rowData.BookingResponse;
@@ -50,7 +51,7 @@ public interface INetwork {
 
     void getTrailDetails(String id, MyEcoTripCallBack<TrailDetailsResponse> avResponseMyEcoTripCallBack);
 
-    void checkVailableSeat(AvailableSeatRuequest availibityRequest, MyEcoTripCallBack<AvailableSeatResponse> avResponseMyEcoTripCallBack);
+    void checkVailableSeat(AvailableSeatRuequest availibityRequest, MyEcoTripCallBack<AvailableSeatBokingResponse> avResponseMyEcoTripCallBack);
 
     void bookTrail(BookingReuest availibityRequest, MyEcoTripCallBack<BookingResponse> avResponseMyEcoTripCallBack);
 

@@ -2,6 +2,7 @@ package com.myecotrip.myecotrip.network;
 
 
 import com.myecotrip.myecotrip.base.CommonModel;
+import com.myecotrip.myecotrip.booking.rowData.AvailableSeatBokingResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatRuequest;
 import com.myecotrip.myecotrip.booking.rowData.BookingResponse;
@@ -74,7 +75,7 @@ interface ApiCall {
     Call<TrailDetailsResponse> getTrailDetails(@Path("id") int bookId);
 
     @POST("checkAvailability")
-    Call<AvailableSeatResponse> checkAvailableSeat(@Body AvailableSeatRuequest availableSeatRuequest);
+    Call<AvailableSeatBokingResponse> checkAvailableSeat(@Body AvailableSeatRuequest availableSeatRuequest);
 
     @POST("initiateBooking")
     Call<BookingResponse> bookingTrail(@Body BookingReuest availableSeatRuequest);
