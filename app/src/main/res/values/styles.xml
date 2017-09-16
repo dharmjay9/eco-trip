@@ -64,6 +64,13 @@
         <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
     </style>
 
+    <style name="TextViewMedium_big_big" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+    </style>
+
     <style name="TextView_button_style" parent="android:TextAppearance.Medium">
         <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:textSize">@dimen/medium_text</item>

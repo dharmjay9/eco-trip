@@ -208,7 +208,7 @@ public class TrailDetailsActivity extends BaseActivity {
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
-            Toast.makeText(this, getResources().getString(R.string.grant_permission_phone), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
             // for ActivityCompat#requestPermissions for more details.
             return;
         }

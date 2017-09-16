@@ -20,6 +20,10 @@ import com.myecotrip.myecotrip.listing.newListing.SubCategoryRequest;
 import com.myecotrip.myecotrip.listing.newListing.SubCategoryRowData;
 import com.myecotrip.myecotrip.login.LoginRequest;
 import com.myecotrip.myecotrip.login.LoginResponse;
+import com.myecotrip.myecotrip.payment.PaymentResponse;
+import com.myecotrip.myecotrip.profileUpdate.OrderHistoryRowData;
+import com.myecotrip.myecotrip.profileUpdate.ProfileUpdateRequest;
+import com.myecotrip.myecotrip.profileUpdate.ProfileUpdateResponse;
 import com.myecotrip.myecotrip.register.RegisterRequest;
 import com.myecotrip.myecotrip.register.RegisterResponse;
 
@@ -35,6 +39,9 @@ interface ApiCall {
 
     @POST("userSignUp")
     Call<RegisterResponse> doSignUp(@Body RegisterRequest registerRequest);
+
+    @POST("profileUpdate")
+    Call<ProfileUpdateResponse> updateProfile(@Body ProfileUpdateRequest registerRequest);
 
     @POST("userSignIn")
     Call<LoginResponse> doSignIn(@Body LoginRequest registerRequest);
@@ -65,10 +72,19 @@ interface ApiCall {
 
     @GET("trailDetail/{id}")
     Call<TrailDetailsResponse> getTrailDetails(@Path("id") int bookId);
+
     @POST("checkAvailability")
     Call<AvailableSeatResponse> checkAvailableSeat(@Body AvailableSeatRuequest availableSeatRuequest);
+
     @POST("initiateBooking")
     Call<BookingResponse> bookingTrail(@Body BookingReuest availableSeatRuequest);
+
+    @GET("trailBookingDetails/{path}")
+    Call<PaymentResponse> getPaymentStatus(@Path("path") String thePath);
+
+    @GET("userBookingHistory/{path}")
+    Call<OrderHistoryRowData> getOrderHistory(@Path("path") String thePath);
+
 
 
 }
