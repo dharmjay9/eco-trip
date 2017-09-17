@@ -3,12 +3,14 @@ package com.myecotrip.myecotrip.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
+import com.myecotrip.myecotrip.common.IConstant;
 import com.myecotrip.myecotrip.home.HomeActivity;
 import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
@@ -17,6 +19,8 @@ import com.myecotrip.myecotrip.register.RegistrationActivity;
 public class LoginActivity extends BaseActivity {
 
     private EditText etEmail, etPassword;
+    public static final String LOGIN_TYPE = "login_type";
+    private int loginType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class LoginActivity extends BaseActivity {
     protected void initView() {
 
         setContentView(R.layout.activity_login);
+        loginType = getIntent().getIntExtra(LOGIN_TYPE, -1);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
         findViewById(R.id.tvSkip).setOnClickListener(new View.OnClickListener() {
@@ -40,7 +45,9 @@ public class LoginActivity extends BaseActivity {
         findViewById(R.id.tvRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                intent.putExtra(LoginActivity.LOGIN_TYPE, loginType);
+                startActivity(intent);
                 finish();
             }
         });
@@ -84,9 +91,13 @@ public class LoginActivity extends BaseActivity {
                     converbizUser.setLastName(loginResponse.getContent().getLast_name());
                     converbizUser.setMobileNo(loginResponse.getContent().getContact_no());
                     converbizUser.setCountry(loginResponse.getContent().getCountry());
-                    Intent intent = new Intent();
-                    setResult(2, intent);
-                    finish();//finishing activity
+                    if (loginType == IConstant.LOGIN_FROM_HOME) {
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    } else {
+                        Intent intent = new Intent();
+                        setResult(2, intent);
+                        finish();//finishing activity
+                    }
                 } else {
                     Toast.makeText(LoginActivity.this, loginResponse.getResponse().getMessage(), Toast.LENGTH_LONG).show();
                 }

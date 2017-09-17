@@ -22,10 +22,24 @@ public class BookingReuest {
     private int trailId;
     private String travelDate;
     private int userId;
+
+    @Override
+    public String toString() {
+        return "BookingReuest{" +
+                "trailId=" + trailId +
+                ", travelDate='" + travelDate + '\'' +
+                ", userId=" + userId +
+                ", requestedSeats=" + requestedSeats +
+                ", total=" + total +
+                ", totalPayable=" + totalPayable +
+                ", detail=" + detail.toString() +
+                '}';
+    }
+
     private int requestedSeats;
-    private int total;
-    private int totalPayable;
-    private List<DetailBean> detail;
+    private double total;
+    private double totalPayable;
+    private List<BookingReuest.DetailBean> detail;
 
     public int getTrailId() {
         return trailId;
@@ -59,31 +73,40 @@ public class BookingReuest {
         this.requestedSeats = requestedSeats;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
-    public int getTotalPayable() {
+    public double getTotalPayable() {
         return totalPayable;
     }
 
-    public void setTotalPayable(int totalPayable) {
+    public void setTotalPayable(double totalPayable) {
         this.totalPayable = totalPayable;
     }
 
-    public List<DetailBean> getDetail() {
+    public List<BookingReuest.DetailBean> getDetail() {
         return detail;
     }
 
-    public void setDetail(List<DetailBean> detail) {
+    public void setDetail(List<BookingReuest.DetailBean> detail) {
         this.detail = detail;
     }
 
     public static class DetailBean {
+        @Override
+        public String toString() {
+            return "DetailBean{" +
+                    "age='" + age + '\'' +
+                    ", sex='" + sex + '\'' +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+
         /**
          * age : 1
          * sex : M
@@ -118,4 +141,6 @@ public class BookingReuest {
             this.name = name;
         }
     }
+
+
 }

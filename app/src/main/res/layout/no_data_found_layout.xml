@@ -8,6 +8,7 @@
     android:layout_margin="@dimen/margin"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:visibility="gone"
     android:padding="@dimen/padding_20"
     android:weightSum="10">
 

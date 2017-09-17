@@ -68,9 +68,9 @@
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="@dimen/margin"
                                 android:text="MakaliDurga"
-                                android:textStyle="bold"
                                 android:textColor="@color/orange"
-                                android:textSize="@dimen/title_text" />
+                                android:textSize="@dimen/title_text"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
@@ -95,9 +95,10 @@
                         android:text="@string/no_of_trekkers" />
 
                     <TextView
-                        android:id="@+id/tv_booked_tickets_count"
                         style="@style/TextViewMedium_detail"
-                        android:layout_width="wrap_content"
+                        android:layout_marginRight="@dimen/margin"
+                        android:id="@+id/tv_booked_tickets_count"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@+id/tv_check_in_time"
                         android:layout_alignStart="@+id/tv_check_in_time"
@@ -122,8 +123,8 @@
                         android:text="@string/check_in" />
 
                     <TextView
-                        style="@style/TextViewMedium_detail"
                         android:id="@+id/tv_check_in_time"
+                        style="@style/TextViewMedium_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -148,8 +149,8 @@
                         android:text="@string/price_per_trekker" />
 
                     <TextView
-                        style="@style/TextViewMedium_detail"
                         android:id="@+id/tv_price_value"
+                        style="@style/TextViewMedium_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -185,8 +186,8 @@
                         android:text="@string/total_price" />
 
                     <TextView
-                        style="@style/TextViewMedium_detail"
                         android:id="@+id/tv_total_price_value"
+                        style="@style/TextViewMedium_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -211,8 +212,8 @@
                         android:text="@string/service_charges" />
 
                     <TextView
-                        style="@style/TextViewMedium_detail"
                         android:id="@+id/tv_service_charge_amaount"
+                        style="@style/TextViewMedium_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"

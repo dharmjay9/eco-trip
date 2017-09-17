@@ -44,15 +44,13 @@ public class OrderSummaryActivity extends BaseActivity {
     private String campId;
     private CheckAvailibityRequest request;
     private int totalGuest;
-    private int total;
-    private int totalPaybable;
+    private double total;
+    private double totalPaybable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         request = getIntent().getParcelableExtra(TRAIL_REQUEST);
-
         setOrderDetails();
 
     }
@@ -111,16 +109,16 @@ public class OrderSummaryActivity extends BaseActivity {
         TextView tv_service_charge_amaount = (TextView) findViewById(R.id.tv_service_charge_amaount);
         TextView tv_total_trip_amount = (TextView) findViewById(R.id.tv_total_trip_amount);
 
-        double totalTripAmmount = (content.getBillDetails().get(0).getValue() + content.getBillDetails().get(1).getValue());
+        totalPaybable = (content.getBillDetails().get(0).getValue() + content.getBillDetails().get(1).getValue());
 
         tv_heder_title.setText(content.getTrailName());
         tv_check_in_time.setText(Utils.getDateInFormate(content.getTravelDate()));
         tv_booked_tickets_count.setText(String.valueOf(request.getGuest_no()));
-
-        tv_price_value.setText(getResources().getString(R.string.currencey_str) + String.valueOf(content.getPricePerPerson()));
+        total=content.getPricePerPerson();
+        tv_price_value.setText(getResources().getString(R.string.currencey_str) + String.valueOf(total));
         tv_total_price_value.setText(getResources().getString(R.string.currencey_str) + String.valueOf(content.getBillDetails().get(0).getValue()));
         tv_service_charge_amaount.setText(getResources().getString(R.string.currencey_str) + String.valueOf(content.getBillDetails().get(1).getValue()));
-        tv_total_trip_amount.setText(getResources().getString(R.string.currencey_str) + String.valueOf(totalTripAmmount));
+        tv_total_trip_amount.setText(getResources().getString(R.string.currencey_str) + String.valueOf(totalPaybable));
 
 
      /*  List<OrderSummaryData> list = new ArrayList<OrderSummaryData>();

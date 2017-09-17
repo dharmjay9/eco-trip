@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.myecotrip.myecotrip.R;
-import com.myecotrip.myecotrip.booking.ActivitySeatDetails;
 import com.myecotrip.myecotrip.common.CommonUtils;
 import com.myecotrip.myecotrip.common.MyEcoTripUser;
 import com.myecotrip.myecotrip.home.HomeActivity;
@@ -17,9 +16,6 @@ import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 import com.myecotrip.myecotrip.network.RestClient;
 
-/**
- * Created by Gopal kumar on 18-08-2017.
- */
 
 public class PaymentFailureActivity extends Activity {
 

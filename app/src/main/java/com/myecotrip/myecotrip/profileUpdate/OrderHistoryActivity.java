@@ -11,11 +11,8 @@ import android.view.MenuItem;
 
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.aboutus.AboutUsActivity;
-import com.myecotrip.myecotrip.listing.newListing.ListingFragment;
 
-/**
- * Created by Gopal kumar on 07-05-2017.
- */
+
 
 public class OrderHistoryActivity extends AppCompatActivity {
 

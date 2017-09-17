@@ -154,4 +154,10 @@
     <string name="booking_title">Booking Details</string>
     <string name="billing_details">Billing details</string>
     <string name="no_data_found">There is no data available.</string>
+    <string-array name="country">
+        <item>India</item>
+        <item>Others</item>
+    </string-array>
+
+
 </resources>
