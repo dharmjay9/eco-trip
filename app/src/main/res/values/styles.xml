@@ -57,6 +57,14 @@
 
     </style>
 
+    <style name="TextViewMedium_detail_regulr" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/medium_text_small</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+        <item name="android:layout_weight">1</item>
+
+    </style>
+
     <style name="TextViewMedium_big" parent="android:TextAppearance.Medium">
     <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:textSize">@dimen/medium_text</item>

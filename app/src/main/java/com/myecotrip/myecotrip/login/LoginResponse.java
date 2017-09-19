@@ -3,9 +3,7 @@ package com.myecotrip.myecotrip.login;
 import com.google.gson.annotations.SerializedName;
 import com.myecotrip.myecotrip.base.CommonModel;
 
-/**
- * Created by Gopal kumar on 04-06-2017.
- */
+
 
 public class LoginResponse extends CommonModel{
 
@@ -50,6 +48,18 @@ public class LoginResponse extends CommonModel{
         private String contact_no;
         private String country;
 
+        private int userId;
+        private String userName;
+        private String email;
+        @SerializedName("country")
+        private String countryX;
+        /**
+         * content : {"userId":5,"userName":"Vinay","last_name":"A N","contact_no":"8861422700","email":"vinayan17@gmail.com","country":"India"}
+         * response : {"status-code":200,"error":0,"sys_msg":"","message":"Login Success"}
+         */
+
+        private ResponseBean response;
+
         public int getId() {
             return id;
         }
@@ -88,6 +98,58 @@ public class LoginResponse extends CommonModel{
 
         public void setCountry(String country) {
             this.country = country;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+        public ResponseBean getResponse() {
+            return response;
+        }
+
+        public void setResponse(ResponseBean response) {
+            this.response = response;
+        }
+
+
+
+        public static class ResponseBean {
+            /**
+             * status-code : 200
+             * error : 0
+             * sys_msg :
+             * message : Login Success
+             */
+
+            private String message;
+
+            public String getMessage() {
+                return message;
+            }
+
+            public void setMessage(String message) {
+                this.message = message;
+            }
         }
     }
 

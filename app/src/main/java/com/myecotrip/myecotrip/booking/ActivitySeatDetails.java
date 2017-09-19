@@ -85,7 +85,7 @@ public class ActivitySeatDetails extends BaseActivity {
         BookingReuest bookingReuest=new BookingReuest();
         bookingReuest.setTrailId(checkAvailibityRequest.getTrail_id());
         bookingReuest.setUserId(Integer.parseInt(converbizUser.getUserId()));
-        bookingReuest.setTravelDate(checkAvailibityRequest.getCheck_in());
+        bookingReuest.setTravelDate(checkAvailibityRequest.getCheck_in().split(" ")[0]);
         bookingReuest.setTotal(total);
         bookingReuest.setTotalPayable(totalPayable);
 

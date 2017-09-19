@@ -25,7 +25,7 @@ public class BookingReuest {
 
     @Override
     public String toString() {
-        return "BookingReuest{" +
+        return "{" +
                 "trailId=" + trailId +
                 ", travelDate='" + travelDate + '\'' +
                 ", userId=" + userId +
@@ -100,7 +100,7 @@ public class BookingReuest {
     public static class DetailBean {
         @Override
         public String toString() {
-            return "DetailBean{" +
+            return "{" +
                     "age='" + age + '\'' +
                     ", sex='" + sex + '\'' +
                     ", name='" + name + '\'' +

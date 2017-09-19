@@ -119,15 +119,15 @@ public class OrderHistoryRowData extends CommonModel {
         private String date_of_booking;
         private String checkIn;
         private int number_of_trekkers;
-        private int amount;
-        private int amountWithTax;
+        private double amount;
+        private double amountWithTax;
         private String booking_status;
         private String gatewayResponse;
         private String trekkers_details;
         private String booking_source;
         private String created_at;
         private String updated_at;
-
+        private String trailName;
         public int getId() {
             return id;
         }
@@ -184,19 +184,19 @@ public class OrderHistoryRowData extends CommonModel {
             this.number_of_trekkers = number_of_trekkers;
         }
 
-        public int getAmount() {
+        public double getAmount() {
             return amount;
         }
 
-        public void setAmount(int amount) {
+        public void setAmount(double amount) {
             this.amount = amount;
         }
 
-        public int getAmountWithTax() {
+        public double getAmountWithTax() {
             return amountWithTax;
         }
 
-        public void setAmountWithTax(int amountWithTax) {
+        public void setAmountWithTax(double amountWithTax) {
             this.amountWithTax = amountWithTax;
         }
 
@@ -246,6 +246,10 @@ public class OrderHistoryRowData extends CommonModel {
 
         public void setUpdated_at(String updated_at) {
             this.updated_at = updated_at;
+        }
+
+        public String getTrailName() {
+            return trailName;
         }
     }
 }

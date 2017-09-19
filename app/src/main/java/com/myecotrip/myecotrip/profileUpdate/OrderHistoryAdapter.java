@@ -39,9 +39,11 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         OrderHistoryRowData.ConstantBean constantBean = list.get(position);
         holder.tvBookingId.setText("Booking ID : "+constantBean.getDisplay_id());
         holder.tvStatus.setText(constantBean.getBooking_status());
-        holder.tvBookingDate.setText("Booking Date : "+CommonUtils.getDateInFormate(constantBean.getDate_of_booking()));
-        holder.tvAmountPaid.setText("Total Amount Paid : "+context.getString(R.string.rupes) + constantBean.getAmountWithTax());
-        holder.tvCheckInDate.setText("Check In Date : "+CommonUtils.getDateInFormate(constantBean.getCheckIn()));
+        holder.tvBookingDate.setText("Booking Date : "+constantBean.getDate_of_booking().split(" ")[0]);
+        holder.tvAmountPaid.setText("Total Amount : "+context.getString(R.string.rupes) + constantBean.getAmountWithTax());
+        holder.tvCheckInDate.setText("Check In : "+CommonUtils.getDateInFormate(constantBean.getCheckIn()));
+
+        holder.tvBookingPlace.setText("Place: "+constantBean.getTrailName());
     }
 
     @Override
@@ -50,7 +52,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     }
 
     public class ListingViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvBookingId, tvStatus, tvCheckInDate, tvBookingDate, tvAmountPaid;
+        private TextView tvBookingId, tvStatus, tvCheckInDate, tvBookingDate, tvAmountPaid,tvBookingPlace;
 
         public ListingViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +61,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             tvCheckInDate = (TextView) itemView.findViewById(R.id.tvCheckInDate);
             tvBookingDate = (TextView) itemView.findViewById(R.id.tvBookingDate);
             tvBookingId = (TextView) itemView.findViewById(R.id.tvBookingId);
+            tvBookingPlace= (TextView) itemView.findViewById(R.id.tvBookingPlace);
         }
 
     }

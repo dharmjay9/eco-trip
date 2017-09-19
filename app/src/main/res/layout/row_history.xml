@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_margin="5dp"
+    android:orientation="vertical"
     app:cardCornerRadius="5dp">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/activity_horizontal_margin"
-        >
+        android:padding="@dimen/activity_horizontal_margin">
 
         <TextView
             android:id="@+id/tvBookingId"
+            style="@style/TextViewMedium_big"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/ivListing"
@@ -33,28 +33,51 @@
             android:maxLines="2"
             android:text="SUCESS." />
 
-
         <TextView
-            android:id="@+id/tvCheckInDate"
+            android:id="@+id/tvBookingPlace"
+            style="@style/TextViewMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvBookingId"
-            android:paddingTop="5dp"
-            android:text="TextView" />
+            tools:text="Bangalore" />
 
-        <TextView
-            android:id="@+id/tvBookingDate"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_textview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvCheckInDate"
-            android:paddingTop="5dp"
-            android:text="TextView" />
+            android:layout_below="@+id/tvBookingPlace"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvBookingDate"
+                style="@style/TextViewMedium_detail_regulr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvCheckInDate"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:text="TextView 11" />
+
+            <TextView
+                android:id="@+id/tvCheckInDate"
+                style="@style/TextViewMedium_detail_regulr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBookingId"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:text="TextView 11" />
+
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tvAmountPaid"
+            style="@style/TextViewMedium_detail_regulr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvBookingDate"
+            android:layout_below="@+id/layout_textview"
             android:paddingTop="5dp"
             android:text="\u20B9 500" />
     </RelativeLayout>

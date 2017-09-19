@@ -66,7 +66,7 @@ public class PaymentSuccessActivity extends Activity {
                    /* if (details.getAmount() == 0)
                         tvTotalAmount.setVisibility(View.GONE);*/
                     //tvTexAmount.setText("Your payment of:" + details.getAmountWithTax());
-                    tv_payment_successfully.setText("Your payment of "+getResources().getString(R.string.currencey_str)+" was Successfully completed.");
+                    tv_payment_successfully.setText("Your payment of "+getResources().getString(R.string.currencey_str)+details.getAmount()+" was Successfully completed.");
                    // tvBookingId.setText("Booking Id :" + details.getDisplay_id());
                    /* tvStatus.setText("Order Status :" + details.getBooking_status());
                     if (details.getNumber_of_trekkers() == 0)

@@ -41,14 +41,14 @@ public class BookingResponse extends CommonModel {
          * order_id : 22
          */
 
-        private int amount;
+        private double amount;
         private int order_id;
 
-        public int getAmount() {
+        public double getAmount() {
             return amount;
         }
 
-        public void setAmount(int amount) {
+        public void setAmount(double amount) {
             this.amount = amount;
         }
 

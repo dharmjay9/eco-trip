@@ -78,16 +78,16 @@ public class LoginActivity extends BaseActivity {
         restClient.doLogin(loginRequest, new MyEcoTripCallBack<LoginResponse>() {
             @Override
             public void onFailure(String s, ErrorCodes errorCodes) {
-                Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
                 hideProgressDialog();
+                Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onSuccess(LoginResponse loginResponse) {
                 if (loginResponse.getResponse().getError() == 0) {
                     hideProgressDialog();
-                    converbizUser.setUserId(String.valueOf(loginResponse.getContent().getId()));
-                    converbizUser.setFirstName(loginResponse.getContent().getFirst_name());
+                    converbizUser.setUserId(String.valueOf(loginResponse.getContent().getUserId()));
+                    converbizUser.setFirstName(loginResponse.getContent().getUserName());
                     converbizUser.setLastName(loginResponse.getContent().getLast_name());
                     converbizUser.setMobileNo(loginResponse.getContent().getContact_no());
                     converbizUser.setCountry(loginResponse.getContent().getCountry());
