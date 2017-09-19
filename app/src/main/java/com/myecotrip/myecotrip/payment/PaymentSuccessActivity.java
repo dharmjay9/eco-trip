@@ -5,43 +5,36 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.myecotrip.myecotrip.R;
+import com.myecotrip.myecotrip.base.BaseActivity;
 import com.myecotrip.myecotrip.common.MyEcoTripUser;
 import com.myecotrip.myecotrip.home.HomeActivity;
 import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 import com.myecotrip.myecotrip.network.RestClient;
 
-/**
- * Created by Gopal kumar on 18-08-2017.
- */
+
 
 public class PaymentSuccessActivity extends Activity {
 
-    private LinearLayout llBooking;
-    private TextView tvProgressText, tvStatus, tvBookingId, tvTotalAmount, tvTexAmount, tvBookingDte,
-            tv_payment_successfully,tvTrailCount, tvTrailName;
+    private TextView             tv_payment_successfully;
     private RestClient restClient;
     private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_success);
-        //llBooking = (LinearLayout) findViewById(R.id.llBooking);
-       // tvProgressText = (TextView) findViewById(R.id.tvProgress);
-        tvStatus = (TextView) findViewById(R.id.tvStatus);
-        tvBookingId = (TextView) findViewById(R.id.tvBookingId);
-       tv_payment_successfully = (TextView) findViewById(R.id.tv_payment_successfully);
-       // tvTexAmount = (TextView) findViewById(R.id.tvTotalTexAmount);
-        tvBookingDte = (TextView) findViewById(R.id.tvBookingDate);
-        tvTrailCount = (TextView) findViewById(R.id.tvTrailCount);
-       // tvTrailName = (TextView) findViewById(R.id.tvTrailName);
+       // setupToolBar();
+        tv_payment_successfully = (TextView) findViewById(R.id.tv_payment_successfully);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         findViewById(R.id.tvContinue).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +46,8 @@ public class PaymentSuccessActivity extends Activity {
         restClient.getPaymentStatus(MyEcoTripUser.getInstance(this).gerOrderId(), new MyEcoTripCallBack<PaymentResponse>() {
             @Override
             public void onFailure(String s, ErrorCodes errorCodes) {
-                tvProgressText.setText("Something went wrong,Please check in order history");
+                //tvProgressText.setText("Something went wrong,Please check in order history");
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -61,24 +55,15 @@ public class PaymentSuccessActivity extends Activity {
 
                 if (paymentResponse.getContent().size() > 0) {
                     PaymentResponse.ContentBean details = paymentResponse.getContent().get(0);
-                    //tvBookingDte.setText("Date of Booking :" + details.getDate_of_booking());
-                    tvTotalAmount.setText("Your payment of " + getResources().getString(R.string.currencey_str)+details.getAmount());
-                   /* if (details.getAmount() == 0)
-                        tvTotalAmount.setVisibility(View.GONE);*/
-                    //tvTexAmount.setText("Your payment of:" + details.getAmountWithTax());
+
                     tv_payment_successfully.setText("Your payment of "+getResources().getString(R.string.currencey_str)+details.getAmount()+" was Successfully completed.");
-                   // tvBookingId.setText("Booking Id :" + details.getDisplay_id());
-                   /* tvStatus.setText("Order Status :" + details.getBooking_status());
-                    if (details.getNumber_of_trekkers() == 0)
-                        tvTrailCount.setText("No of tracker :" + details.getNumber_of_trekkers());
-                    tvTrailName.setVisibility(View.GONE);
-                    tvTrailName.setText("Trail Name :" + details.getTrailName());*/
-                    tvProgressText.setVisibility(View.GONE);
-                    llBooking.setVisibility(View.VISIBLE);
+
+                   // tvProgressText.setVisibility(View.GONE);
+                   // llBooking.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
 
                 }
-                tvProgressText.setText("Something went wrong,Please check in order history");
+              //  tvProgressText.setText("Something went wrong,Please check in order history");
 
             }
         });

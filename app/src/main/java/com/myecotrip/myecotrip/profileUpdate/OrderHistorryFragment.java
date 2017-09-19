@@ -16,16 +16,10 @@ import android.widget.Toast;
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseFragment;
 import com.myecotrip.myecotrip.common.MyEcoTripUser;
-import com.myecotrip.myecotrip.listing.newListing.DashBoardAdapter;
-import com.myecotrip.myecotrip.listing.newListing.SubCategoryRequest;
-import com.myecotrip.myecotrip.listing.newListing.SubCategoryRowData;
 import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 
 
-/**
- * Created by divum on 13/2/17.
- */
 
 public class OrderHistorryFragment extends BaseFragment {
 

@@ -17,9 +17,7 @@ import com.myecotrip.myecotrip.common.CommonUtils;
 import com.myecotrip.myecotrip.listing.ListingActivity;
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by Gopal kumar on 06-05-2017.
- */
+
 
 public class SwipeItemFragment extends Fragment {
 
