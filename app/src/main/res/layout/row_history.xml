@@ -59,6 +59,7 @@
                 android:text="TextView 11" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvCheckInDate"
                 style="@style/TextViewMedium_detail_regulr"
                 android:layout_width="wrap_content"
