@@ -64,7 +64,7 @@ public class SwipeItemFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startActivity(new Intent(getActivity(),ListingActivity.class));
+                // startActivity(new Intent(getActivity(),OrderHistoryActivity.class));
 
             }
         });

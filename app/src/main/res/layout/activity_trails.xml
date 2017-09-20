@@ -19,7 +19,7 @@
         android:id="@+id/svMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:paddingBottom="50dp"
         android:visibility="gone">
 
@@ -60,46 +60,188 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingBottom="8dp"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingTop="8dp">
 
-                    <TextView
-                        android:id="@+id/tvDistance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/colorBlack"
-                        tools:text="TextView" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small"
+                        android:weightSum="2">
 
-                    <TextView
-                        android:id="@+id/tvTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/colorBlack"
-                        tools:text="TextView" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/starting_point"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp" />
 
-                    <TextView
-                        android:id="@+id/tvTrailType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/colorBlack"
-                        tools:text="TextView" />
+                        <TextView
+                            android:id="@+id/tvstarting_point"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Muthurayaswamy Temple" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="When to visit"
-                        android:textColor="@color/colorBlack" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
 
-                    <TextView
-                        android:id="@+id/tvWhenToVisit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        tools:text="When to visit" />
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/end_point"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/tv_end_point"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Muthurayaswamy Temple" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/treakking_distance"
+                            android:textColor="@color/colorBlack" />
+
+
+                        <TextView
+                            android:id="@+id/tv_treakking_distance"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Muthurayaswamy Temple" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/reporting_time"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/tv_reporting_time"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Muthurayaswamy Temple" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/treakking_duration"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/tv_treakking_duration"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Muthurayaswamy Temple" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/treakking_type"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/tv_treakking_type"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Muthurayaswamy Temple" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/hafe_margin"
+                        android:layout_marginRight="@dimen/hafe_margin"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_very_small">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="When to visit"
+                            android:textColor="@color/colorBlack" />
+
+
+                        <TextView
+                            android:id="@+id/tvWhenToVisit"
+                            style="@style/TextViewMedium_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="When to visit" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
@@ -122,17 +264,77 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorBlack"
-                        tools:text="Details" />
+                        tools:text="About" />
 
                     <TextView
                         android:id="@+id/tvDescription"
-                        style="@style/TextViewMedium"
+                        style="@style/TextViewMedium_big"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin_very_small"
                         android:paddingTop="8dp"
                         tools:text="Details" />
 
+                    <TextView
+                        android:id="@+id/tv_description_note"
+                        style="@style/TextViewMedium_big"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin_very_small"
+                        android:paddingTop="8dp"
+                        android:textStyle="bold"
+                        tools:text="Details" />
+
                 </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/hafe_margin"
+                android:layout_marginRight="@dimen/hafe_margin"
+               >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/direction_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/location_detail"
+                            style="@style/TextView_button_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="Start Booking"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/trekker_per_person"
+                            style="@style/TextView_button_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Start Booking" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/owner_contact_person"
+                        style="@style/TextView_button_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/direction_price"
+                        android:layout_margin="5dp"
+                        android:text="Gopal" />
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
 
         </LinearLayout>

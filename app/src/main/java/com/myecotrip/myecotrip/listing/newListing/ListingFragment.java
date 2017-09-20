@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -18,16 +19,14 @@ import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 
 
-/**
- * Created by divum on 13/2/17.
- */
+
 
 public class ListingFragment extends BaseFragment {
 
     private Activity mActivity;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-
+private LinearLayout no_item_layout;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -40,6 +39,7 @@ public class ListingFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
         progressBar= (ProgressBar) view.findViewById(R.id.progressBar);
+        no_item_layout= (LinearLayout) view.findViewById(R.id.no_item_layout);
         recyclerView = (RecyclerView) view.findViewById(R.id.rvCommon);
         return view;
     }
@@ -56,11 +56,18 @@ public class ListingFragment extends BaseFragment {
 
             @Override
             public void onSuccess(SubCategoryRowData subCategoryRowData) {
-                DashBoardAdapter dashBoardAdapter = new DashBoardAdapter(getActivity(), subCategoryRowData.getContent(),type);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                recyclerView.setAdapter(dashBoardAdapter);
                 progressBar.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.VISIBLE);
+                if(subCategoryRowData.getContent().size() >0){
+                    DashBoardAdapter dashBoardAdapter = new DashBoardAdapter(getActivity(), subCategoryRowData.getContent(),type);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    recyclerView.setAdapter(dashBoardAdapter);
+                    no_item_layout.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }else{
+                    no_item_layout.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                }
+
             }
         });
     }

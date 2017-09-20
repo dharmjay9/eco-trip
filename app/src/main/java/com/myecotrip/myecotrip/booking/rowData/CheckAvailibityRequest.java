@@ -24,6 +24,19 @@ public class CheckAvailibityRequest implements Parcelable {
     private String check_in;
     private int user_id;
 
+    public String getCheck_in_day() {
+        return check_in_day;
+    }
+
+    public void setCheck_in_day(String check_in_day) {
+        this.check_in_day = check_in_day;
+    }
+
+    public static Creator<CheckAvailibityRequest> getCREATOR() {
+        return CREATOR;
+    }
+
+    private String check_in_day;
     public int getCamp_id() {
         return camp_id;
     }
@@ -76,6 +89,7 @@ public class CheckAvailibityRequest implements Parcelable {
         dest.writeInt(this.guest_no);
         dest.writeString(this.check_in);
         dest.writeInt(this.user_id);
+        dest.writeString(this.check_in_day);
     }
 
     public CheckAvailibityRequest() {
@@ -87,6 +101,7 @@ public class CheckAvailibityRequest implements Parcelable {
         this.guest_no = in.readInt();
         this.check_in = in.readString();
         this.user_id = in.readInt();
+        this.check_in_day=in.readString();
     }
 
     public static final Parcelable.Creator<CheckAvailibityRequest> CREATOR = new Parcelable.Creator<CheckAvailibityRequest>() {

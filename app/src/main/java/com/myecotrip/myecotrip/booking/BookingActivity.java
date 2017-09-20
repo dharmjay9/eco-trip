@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
+import com.myecotrip.myecotrip.booking.rowData.AvailableSeatBokingResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatResponse;
 import com.myecotrip.myecotrip.booking.rowData.AvailableSeatRuequest;
 import com.myecotrip.myecotrip.booking.rowData.CheckAvailibityRequest;
@@ -75,7 +76,7 @@ public class BookingActivity extends BaseActivity implements CommunicationInterf
                     availableSeatRuequest.setTrailId(checkAvailibityRequest.getTrail_id());
                     final ProgressDialog progressDialog=new ProgressDialog(BookingActivity.this);
                     progressDialog.show();
-                    restClient.checkVailableSeat(availableSeatRuequest, new MyEcoTripCallBack<AvailableSeatResponse>() {
+                    restClient.checkVailableSeat(availableSeatRuequest, new MyEcoTripCallBack<AvailableSeatBokingResponse>() {
                         @Override
                         public void onFailure(String s, ErrorCodes errorCodes) {
 
@@ -83,7 +84,7 @@ public class BookingActivity extends BaseActivity implements CommunicationInterf
                         }
 
                         @Override
-                        public void onSuccess(AvailableSeatResponse availableSeatResponse) {
+                        public void onSuccess(AvailableSeatBokingResponse availableSeatResponse) {
 
                             progressDialog.dismiss();
                             if(availableSeatResponse.getResponse().getError()==0){

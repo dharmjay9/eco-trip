@@ -47,6 +47,48 @@
         <item name="android:textSize">@dimen/medium_text</item>
         <item name="fontPath">fonts/PFBeauSansPro-Regular.ttf</item>
     </style>
+
+    <style name="TextViewMedium_detail" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/medium_text_small</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+
+    </style>
+
+    <style name="TextViewMedium_detail_regulr" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/medium_text_small</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+        <item name="android:layout_weight">1</item>
+
+    </style>
+
+    <style name="TextViewMedium_big" parent="android:TextAppearance.Medium">
+    <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+    </style>
+
+    <style name="TextViewMedium_big_big" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+    </style>
+
+    <style name="TextView_button_style" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:background">@drawable/border</item>
+        <item name="fontPath">fonts/AVENIRLTSTD-BOOK.OTF</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:gravity">center</item>
+    </style>
     <style name="DottedSeperator">
         <item name="android:textSize">@dimen/dotted_seperator_text_size</item>
         <item name="android:layout_marginLeft">@dimen/margin</item>

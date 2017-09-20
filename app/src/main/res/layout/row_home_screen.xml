@@ -7,7 +7,7 @@
     android:layout_marginRight="8dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:layout_height="250dp">
+    android:layout_height="200dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -45,6 +45,8 @@
             android:layout_gravity="bottom|left"
             android:background="@color/colorBlackDarkTransparent"
             android:orientation="vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/hafe_margin"
             android:gravity="center_vertical"
             >
             <TextView
@@ -52,8 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/margin_smaller"
-                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:textSize="15sp"
                 android:textColor="@color/white"
                 android:text="Bandipur National Park, an 874-sq.-km forested reserve in the southern Indian state of Karnatak" />
@@ -64,10 +64,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingTop="3dp"
                 android:textColor="@color/white"
                 android:textSize="13sp"
-                android:text="7 Trail"
+                android:text="7 trails"
                 android:paddingBottom="@dimen/margin_smaller"
                 />
         </LinearLayout>

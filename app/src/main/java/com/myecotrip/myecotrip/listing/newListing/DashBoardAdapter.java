@@ -55,7 +55,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.Dash
         String url=CommonUtils.getImageUrl(subCategoryRowData.getLogo());
         Picasso.with(mContext).load(url).placeholder(R.drawable.icon_placeholder).into(holder.ivSafari);
         holder.tvName.setText(subCategoryRowData.getName());
-        holder.tvTrailCount.setText(subCategoryRowData.getTrailCount()+ " tails");
+        holder.tvTrailCount.setText(subCategoryRowData.getTrailCount()+ " trails");
 
         holder.tvComingSoon.setVisibility(View.GONE);
 

@@ -6,9 +6,10 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.myecotrip.myecotrip.base.CommonModel;
 
-/**
- * Created by Gopal kumar on 18-08-2017.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class AvailableSeatResponse extends CommonModel implements Parcelable {
 
@@ -55,10 +56,13 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
         private double serviceCharges;
         private double totalPayable;
         private String trailName;
+        private String trailLogo;
 
         public String getTrailName() {
             return trailName;
         }
+
+        private List<BillDetailsBean> billDetails;
 
         public void setTrailName(String trailName) {
             this.trailName = trailName;
@@ -122,6 +126,14 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             this.totalPayable = totalPayable;
         }
 
+        public List<BillDetailsBean> getBillDetails() {
+            return billDetails;
+        }
+
+        public void setBillDetails(List<BillDetailsBean> billDetails) {
+            this.billDetails = billDetails;
+        }
+
         public ContentBean() {
         }
 
@@ -140,6 +152,8 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             dest.writeDouble(this.totalPayable);
             dest.writeString(this.trailName);
             dest.writeInt(this.trailId);
+            dest.writeString(this.trailLogo);
+            dest.writeList(this.billDetails);
         }
 
         protected ContentBean(Parcel in) {
@@ -151,6 +165,12 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             this.totalPayable = in.readDouble();
             this.trailName = in.readString();
             this.trailId = in.readInt();
+            this.trailLogo = in.readString();
+            //billDetails = new ArrayList<BillDetailsBean>();
+            //in.readList(billDetails,null);
+            in.readList(this.billDetails, BillDetailsBean.class.getClassLoader());
+
+
         }
 
         public static final Creator<ContentBean> CREATOR = new Creator<ContentBean>() {
@@ -164,6 +184,10 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
                 return new ContentBean[size];
             }
         };
+
+        public String getTrailLogo() {
+            return trailLogo;
+        }
     }
 
     public static class ResponseBean implements Parcelable {
@@ -278,4 +302,58 @@ public class AvailableSeatResponse extends CommonModel implements Parcelable {
             return new AvailableSeatResponse[size];
         }
     };
+
+    public static class BillDetailsBean implements Parcelable {
+        /**
+         * name : Total price
+         * value : 2250
+         */
+
+        private String name;
+        private double value;
+
+        protected BillDetailsBean(Parcel in) {
+            name = in.readString();
+            value = in.readInt();
+        }
+
+        public static final Creator<BillDetailsBean> CREATOR = new Creator<BillDetailsBean>() {
+            @Override
+            public BillDetailsBean createFromParcel(Parcel in) {
+                return new BillDetailsBean(in);
+            }
+
+            @Override
+            public BillDetailsBean[] newArray(int size) {
+                return new BillDetailsBean[size];
+            }
+        };
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public double getValue() {
+            return value;
+        }
+
+        public void setValue(double value) {
+            this.value = value;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(name);
+            parcel.writeDouble(value);
+        }
+    }
 }

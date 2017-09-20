@@ -26,9 +26,6 @@ import com.myecotrip.myecotrip.payment.WebViewActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Gopal kumar on 18-08-2017.
- */
 
 public class ActivitySeatDetails extends BaseActivity {
 
@@ -52,7 +49,7 @@ public class ActivitySeatDetails extends BaseActivity {
         totalCount = getIntent().getIntExtra("count", 0);
         checkAvailibityRequest=getIntent().getParcelableExtra("k1");
         list = new ArrayList<>();
-        for (int i = 0; i < totalCount; i++) {
+        for (int i = 0; i < checkAvailibityRequest.getGuest_no(); i++) {
             list.add(new BookingReuest.DetailBean());
         }
         btnPay.setOnClickListener(new View.OnClickListener() {
@@ -83,16 +80,19 @@ public class ActivitySeatDetails extends BaseActivity {
                 return;
             }
         }
-
+        double total=getIntent().getDoubleExtra("k2",0);
+        double totalPayable=getIntent().getDoubleExtra("k3",0);
         BookingReuest bookingReuest=new BookingReuest();
         bookingReuest.setTrailId(checkAvailibityRequest.getTrail_id());
         bookingReuest.setUserId(Integer.parseInt(converbizUser.getUserId()));
-        bookingReuest.setTravelDate(checkAvailibityRequest.getCheck_in());
-        bookingReuest.setTotal(getIntent().getIntExtra("k1",0));
-        bookingReuest.setTotalPayable(getIntent().getIntExtra("k2",0));
+        bookingReuest.setTravelDate(checkAvailibityRequest.getCheck_in().split(" ")[0]);
+        bookingReuest.setTotal(total);
+        bookingReuest.setTotalPayable(totalPayable);
+
         bookingReuest.setDetail(list);
         final ProgressDialog progressDialog=new ProgressDialog(this);
         progressDialog.show();
+        String bookingStr=bookingReuest.toString();
         restClient.bookTrail(bookingReuest, new MyEcoTripCallBack<BookingResponse>() {
             @Override
             public void onFailure(String s, ErrorCodes errorCodes) {

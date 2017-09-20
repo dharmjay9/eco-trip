@@ -3,19 +3,27 @@ package com.myecotrip.myecotrip.register;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.myecotrip.myecotrip.R;
 import com.myecotrip.myecotrip.base.BaseActivity;
+import com.myecotrip.myecotrip.common.IConstant;
 import com.myecotrip.myecotrip.home.HomeActivity;
+import com.myecotrip.myecotrip.login.LoginActivity;
 import com.myecotrip.myecotrip.network.ErrorCodes;
 import com.myecotrip.myecotrip.network.MyEcoTripCallBack;
 
 public class RegistrationActivity extends BaseActivity {
 
     private EditText etFName,etLName,etMobile,etEmail,etPassword,etCPass;//,etAddress,etPinCode
+    private String countryName;
+    private Spinner countrySpinner;
+    private int loginType;
            // ,etState,etCountry,etCity,etCPass;
 
     @Override
@@ -26,12 +34,26 @@ public class RegistrationActivity extends BaseActivity {
     @Override
     protected void initView() {
         setContentView(R.layout.activity_registration);
+        loginType=getIntent().getIntExtra(LoginActivity.LOGIN_TYPE,-1);
         etFName= (EditText) findViewById(R.id.etFname);
         etLName= (EditText) findViewById(R.id.etLname);
         etMobile= (EditText) findViewById(R.id.etMobile);
         etEmail= (EditText) findViewById(R.id.etEmail);
         etPassword= (EditText) findViewById(R.id.etPassword);
         etCPass= (EditText) findViewById(R.id.etCpassword);
+        final String []countryArry=getResources().getStringArray(R.array.country);
+        countrySpinner= (Spinner) findViewById(R.id.countrySpinner);
+        countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                countryName=countryArry[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
        // etAddress= (EditText) findViewById(R.id.etAddress);
        // etPinCode= (EditText) findViewById(R.id.etPinCode);
        // etState= (EditText) findViewById(R.id.etSate);
@@ -91,6 +113,8 @@ public class RegistrationActivity extends BaseActivity {
         registerRequest.setLast_name(etLName.getText().toString());
         registerRequest.setEmail(etEmail.getText().toString());
         registerRequest.setPassword(etPassword.getText().toString());
+        registerRequest.setCountry(countryName);
+       // registerRequest.setContact_no();
        // registerRequest.setAddress(etAddress.getText().toString());
        // registerRequest.setPincode(etPinCode.getText().toString());
        // registerRequest.setCity(etCity.getText().toString());
@@ -111,9 +135,17 @@ public class RegistrationActivity extends BaseActivity {
             public void onSuccess(RegisterResponse registerResponse) {
                 hideProgressDialog();
                 converbizUser.setUserId(String.valueOf(registerResponse.getContent().getId()));
-                Intent intent=new Intent();
-                setResult(2,intent);
-                finish();//finishing activity
+                converbizUser.setFirstName(registerResponse.getContent().getFirst_name());
+                converbizUser.setLastName(registerResponse.getContent().getLast_name());
+                converbizUser.setMobileNo(registerResponse.getContent().getContact_no());
+                converbizUser.setCountry(registerResponse.getContent().getCountry());
+                if (loginType == IConstant.LOGIN_FROM_HOME) {
+                    startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
+                } else {
+                    Intent intent = new Intent();
+                    setResult(2, intent);
+                    finish();//finishing activity
+                }
             }
         });
 

@@ -7,7 +7,7 @@ import com.myecotrip.myecotrip.base.CommonModel;
  * Created by Gopal kumar on 04-06-2017.
  */
 
-public class RegisterResponse extends CommonModel{
+public class RegisterResponse extends CommonModel {
 
 
     /**
@@ -35,28 +35,59 @@ public class RegisterResponse extends CommonModel{
     }
 
     public static class ContentBean {
+
         /**
-         * id : 11
-         * name : asdas
+         * id : 7
+         * first_name : abcd
+         * last_name : xyz
+         * contact_no : 8852103645
+         * country : India
          */
 
-        private int id;
-        private String name;
+        private String id;
+        private String first_name;
+        private String last_name;
+        private String contact_no;
+        private String country;
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
-        public String getName() {
-            return name;
+        public String getFirst_name() {
+            return first_name;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setFirst_name(String first_name) {
+            this.first_name = first_name;
+        }
+
+        public String getLast_name() {
+            return last_name;
+        }
+
+        public void setLast_name(String last_name) {
+            this.last_name = last_name;
+        }
+
+        public String getContact_no() {
+            return contact_no;
+        }
+
+        public void setContact_no(String contact_no) {
+            this.contact_no = contact_no;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
         }
     }
 
