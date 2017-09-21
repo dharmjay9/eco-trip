@@ -2,7 +2,6 @@ package com.myecotrip.myecotrip.profileUpdate;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,7 @@ import com.myecotrip.myecotrip.common.CommonUtils;
 
 import java.util.List;
 
-/**
- * Created by Gopal kumar on 30-05-2017.
- */
+
 
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ListingViewHolder> {
 
@@ -41,7 +38,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.tvStatus.setText(constantBean.getBooking_status());
         holder.tvBookingDate.setText("Booking Date : "+constantBean.getDate_of_booking().split(" ")[0]);
         holder.tvAmountPaid.setText("Total Amount : "+context.getString(R.string.rupes) + constantBean.getAmountWithTax());
-        holder.tvCheckInDate.setText("Check In : "+CommonUtils.getDateInFormate(constantBean.getCheckIn()));
+       // holder.tvCheckInDate.setText("Check In : "+CommonUtils.getDateInFormate(constantBean.getCheckIn()));
         holder.tvBookingPlace.setText("Place: "+constantBean.getTrailName());
     }
 

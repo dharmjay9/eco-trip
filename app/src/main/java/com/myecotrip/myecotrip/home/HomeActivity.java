@@ -67,12 +67,12 @@ public class HomeActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         tvUserName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvUserName);
         tvMobile = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvMobile);
-        navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+       /* navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, ProfileUpdateActivity.class));
             }
-        });
+        });*/
         myEcoTripUser = MyEcoTripUser.getInstance(this);
         navigationView.setNavigationItemSelectedListener(this);
         if (navigationView != null) {
@@ -159,9 +159,13 @@ public class HomeActivity extends BaseActivity
 
         }
 
+        if (id == R.id.nav_update_profile){
+            startActivity(new Intent(HomeActivity.this, ProfileUpdateActivity.class));
+        }
+
         drawer.closeDrawer(GravityCompat.START);
 
-        return true;
+        return false;
     }
 
     @Override

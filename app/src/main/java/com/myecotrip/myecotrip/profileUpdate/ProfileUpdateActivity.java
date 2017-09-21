@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class ProfileUpdateActivity extends BaseActivity {
 
     private EditText etFName, etLName, etMobile;
     private MyEcoTripUser myEcoTripUser;
+    private Button btn_UpdateProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,12 @@ public class ProfileUpdateActivity extends BaseActivity {
         etFName = (EditText) findViewById(R.id.etFname);
         etLName = (EditText) findViewById(R.id.etLname);
         etMobile = (EditText) findViewById(R.id.etMobile);
+        btn_UpdateProfile = (Button) findViewById(R.id.btnSignUp);
         myEcoTripUser = MyEcoTripUser.getInstance(this);
         etFName.setText(myEcoTripUser.getFirstName());
         etLName.setText(myEcoTripUser.getLastName());
         etMobile.setText(myEcoTripUser.getMobileNo());
+        btn_UpdateProfile.setText("Update Profile");
 
         findViewById(R.id.btnSignUp).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +90,7 @@ public class ProfileUpdateActivity extends BaseActivity {
         final ProfileUpdateRequest registerRequest = new ProfileUpdateRequest();
         registerRequest.setFirst_name(etFName.getText().toString());
         registerRequest.setLast_name(etLName.getText().toString());
-        registerRequest.setFirst_name(etFName.getText().toString());
+        //registerRequest.setFirst_name(etFName.getText().toString());
         registerRequest.setContact_no(etMobile.getText().toString());
         registerRequest.setId(myEcoTripUser.getUserId());
         registerRequest.setSign_in_with("myecotrip");
