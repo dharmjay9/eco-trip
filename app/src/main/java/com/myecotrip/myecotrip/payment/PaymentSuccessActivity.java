@@ -9,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class PaymentSuccessActivity extends Activity {
     private TextView             tv_payment_successfully;
     private RestClient restClient;
     private ProgressBar progressBar;
+    private ImageView iv_PaymentSuccessIcon;
 
 
     @Override
@@ -40,6 +42,8 @@ public class PaymentSuccessActivity extends Activity {
         tvProgressText = (TextView) findViewById(R.id.tvProgress);
         tvStatus = (TextView) findViewById(R.id.tvStatus);
         cvBooking = (CardView) findViewById(R.id.cv_booking);
+        iv_PaymentSuccessIcon = (ImageView)findViewById(R.id.iv_payment_success_icon);
+        iv_PaymentSuccessIcon.setVisibility(View.VISIBLE);
         //tvBookingId = (TextView) findViewById(R.id.tvBookingId);
        tv_payment_successfully = (TextView) findViewById(R.id.tv_payment_successfully);
        // tvTexAmount = (TextView) findViewById(R.id.tvTotalTexAmount);
@@ -60,7 +64,7 @@ public class PaymentSuccessActivity extends Activity {
             @Override
             public void onFailure(String s, ErrorCodes errorCodes) {
 //                tv_payment_successfully.setText("Something went wrong,Please check in order history");
-                cvBooking.setVisibility(View.GONE);
+                //cvBooking.setVisibility(View.GONE);
                  tvProgressText.setText("Something went wrong,Please check in order history");
                 //tvProgressText.setText("Something went wrong,Please check in order history");
                 progressBar.setVisibility(View.GONE);
@@ -90,7 +94,7 @@ public class PaymentSuccessActivity extends Activity {
 
                // }
                 //tv_payment_successfully.setText("Something went wrong,Please check in order history");
-                cvBooking.setVisibility(View.GONE);
+                //cvBooking.setVisibility(View.GONE);
                 tvProgressText.setText("Something went wrong,Please check in order history");
 
                     tv_payment_successfully.setText("Your payment of "+getResources().getString(R.string.currencey_str)+details.getAmount()+" was Successfully completed.");

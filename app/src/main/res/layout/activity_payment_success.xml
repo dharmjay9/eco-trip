@@ -39,10 +39,11 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iv_payment_success_icon"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="20dp"
-                app:srcCompat="@drawable/ic_done_24dp" />
+                android:src="@drawable/ic_done_24dp"/>
 
             <TextView
                 android:id="@+id/tvStatus"

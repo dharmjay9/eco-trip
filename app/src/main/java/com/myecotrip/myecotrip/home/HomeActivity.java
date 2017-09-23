@@ -148,14 +148,14 @@ public class HomeActivity extends BaseActivity
                 }
             }
 
-            return true;
+            return false;
 
 
         }
         if (id == R.id.history) {
             drawer.closeDrawer(GravityCompat.START);
             startActivity(new Intent(HomeActivity.this, OrderHistoryActivity.class));
-            return true;
+            return false;
 
 
         }
