@@ -68,6 +68,12 @@
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.AppCompatSpinner>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/margin_extra_small_one"
+                android:layout_marginRight="@dimen/margin_extra_small_one"
+                android:background="@color/light_black"/>
 
             <android.support.design.widget.TextInputLayout
                 android:paddingBottom="10dp"

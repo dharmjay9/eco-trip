@@ -1,6 +1,7 @@
 package com.myecotrip.myecotrip.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -160,9 +161,16 @@ public class HomeActivity extends BaseActivity
         }
 
         if (id == R.id.nav_update_profile){
-            startActivity(new Intent(HomeActivity.this, ProfileUpdateActivity.class));
+            if ("".equals(MyEcoTripUser.getInstance(this).getUserId())){
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                intent.putExtra(LoginActivity.LOGIN_TYPE, IConstant.LOGIN_FROM_HOME);
+                startActivity(intent);
+                finish();
+                setNameUser();
+            }else {
+                startActivity(new Intent(HomeActivity.this, ProfileUpdateActivity.class));
+            }
         }
-
         drawer.closeDrawer(GravityCompat.START);
 
         return false;
